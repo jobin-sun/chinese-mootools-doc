@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - 中文文档</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+	<script src="js/mootools-core-1.4.5.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">新手指点</h1>
+<h2 class="title">学习及调试方法</h2>
+<p>
+javascript及其框架的学习还是比较简单的,不用配置环境,有个浏览器就能写javascript代码.<br />
+但为了提高学习和开发的效率,建议使用Chrome浏览器或Firefox浏览器+firebug插件.学会了调试学习javascript基本就像顺手推舟一样简单了.<br />
+下面有将用Chrome做个简单调试说明.
+</p>
+<h3>打开开发工具</h3>
+有两种常方法
+<ol>
+	<li>按F12(Windows).</li>
+	<li>在想要查看的元素上右键->审查元素,然后审查元素在开发工具中高亮显示,如下图:
+		<p><img src="images/openTool.png"></p>
+		<p><img src="images/checkElement.png"></p>
+	</li>
+</ol>
+<h3>开发工具面板说明</h3>
+<p><img src="images/panel.png" style="width:610px;"></p>
+<ol>
+	<li>Elements 树形展示DOM文档结构.</li>
+	<li>Network 查看此页面内的所有http请求(注:必须先打开开发工具才能看到请求,如果文档加载完成后才打开开发工具请刷新页面)
+		此功能在开发中非常有用,常用来分析ajax请求与响应是否一至.
+	</li>
+	<li>Sources 资源选项,可以查看此文档下的所有资源,如html文件,css文件,javascript文件,图片等.</li>
+	<li>Console 控制台这也是你学习Javascript及框架应该用的最多的功能,下文详细介绍.</li>
+	<li>其它功能自己去探索.</li>
+</ol>
+<h3>控制台的使用</h3>
+<p>控制台可以打印出javascript错误信息,也可以直接在里面运行javascript代码,代码的运行环境为javascript的全局环境.
+可以在控制台访问到全局变量,这一点对学习Mootools和javascript很有用.以下将截图介绍(引站点所以页面已引入Mootools框架).</p>
+<ol>
+	<li>打印Mootools的Browser对象,打印一个变量有两种方法:使用浏览器的原生方法console.log(变量名),另直接输入变量名.第二种较简便,所以我们下文全部使用第二种方式.
+		<p><img src="images/dumpBrowser.png"></p>
+		<p>从上图可以明了的看出Browser对象中有哪些东西,所框架的有些用法不用看文档,打印一下对象信息基本就了解怎么用了.</p>
+	</li>
+	<li>设置或修改一个变量
+		<p><img src="images/setVar.png"></p>
+		<p>图片已可解释一切,我也不再累赘.</p>
+	</li>
+</ol>
+<h3>对初学者的建议</h3>
+<ol>
+	<li>在看文档时打开控制台,边看文档边在控制台运行文档里的示例.</li>
+	<li>译者水平有限,如果不明白的地方可去官方参考<a target="_blank" href="http://mootools.net/docs/core">英文文档</a>,不要放弃英文.</li>
+</ol>
+<h2 class="title">图书推荐</h2>
+<ul>
+	<li>&lt;&lt;javascript高级程序设计&gt;&gt;很薄,花几天时间就能看完,入门推荐.</li>
+	<li>&lt;&lt;javascript权威指南&gt;&gt;这个是Javascript的圣经了,非常厚,内容非常详细,建议当成工具书用.</li>
+</ul>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>
