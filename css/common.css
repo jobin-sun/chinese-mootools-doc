@@ -24,3 +24,4 @@ ul{list-style-type: disc;}
 .treeItem a:hover,.treeItem a:active {color: #e79d35;}
 #notify{position:absolute;top:0;right:0;height:50px;}
 .version{text-align:center;font-size:0.75em}
+a{color: #009;text-decoration: underline;}
