@@ -1,0 +1,214 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Element/Dimensions</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Type: Element</h1>
+自定义类型，其所有的方法允许通过$函数生成对象使用。
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>这此方法不考虑body的margin和border,可以考虑内容用一个div包含,并设置body的margin和border为0.</li>
+	<li>如果需要测量没有被display(包含父类没有display),需要使用<a target="_blank" href="http://mootools.net/docs/more/Element/Element.Measure">Element.measure</a></li>
+</ul>
+<h2 class="title">Element Method: scrollTo</h2>
+滚动元素到指定坐标(如果元素有overflow样式),此方法可以用于window对象。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.scrollTo(x, y);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>x - (number)的x坐标。</li>
+	<li>y - (number)的y坐标。</li>
+</ol>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">myElement.scrollTo(x, y);</div>
+<h2 class="title">Element Method: getSize</h2>
+
+返回元素的高度和宽度，包含borders和padding。可用在Window对象上。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.getSize();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 一个包含宽(x)和高(y)的对象。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var size = myElement.getSize();
+alert('The element is ' + size.x + ' pixels wide and ' + size.y + 'pixels high.');</div>
+
+<h2 class="title">Element Method: getScrollSize</h2>
+返回元素可滚动区域的大小,此方法可用在Window对象上.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.getScrollSize();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object)包含目标元素的x和y可滚动大小的对象。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var scroll = $('myElement').getScrollSize();
+alert('My element can scroll to ' + scroll.y + 'px'); // alerts 'My element can scroll down to 820px'</div>
+<h2 class="title">Element Method: getScroll</h2>
+返回一个元素已滚动了多少,此方法也可用在Window对象上.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.getScroll();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object)包含目标元素已滚动大小的对象。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var scroll = $('myElement').getScroll();
+alert('My element is scrolled down ' + scroll.y + 'px'); // alerts 'My element is scrolled down to 620px'</div>
+
+<h2 class="title">Element Method: getPosition</h2>
+
+返回元素的实际偏移量。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.getPosition(relative);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ul>
+	<li>relative - (Element, defaults to the document) 如果设置，则相对于这个元素。</li>
+</ul>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 相对于该元素的距离。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$('element').getPosition(); // returns {x: 100, y: 500};</div>
+<h2 class="title">Element Method: setPosition</h2>
+设置元素的left和top属性(css样式).
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.setPosition(positions);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>positions - (object) 一个对象(如{x:100,y:100})</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element) 当前元素。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">myElement.setPosition({x: 10, y: 100});</div>
+<h2 class="title">Element Method: getCoordinates</h2>
+返回一个对象，包含width, height, left, right, top, bottom坐标值.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myValues = $('myElement').getCoordinates();</div>
+
+<h3 class="subTitle">参数:</h3>
+<ul>
+	<li>relative - (element, optional) 如果设置，将相对于此元素，否则相对于document。</li>
+</ul>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 包含元素的top, left, width, height, right, bottom。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var myValues = $('myElement').getCoordinates();</div>
+<h3 class="subTitle">返回:</h3>
+<div class="javascript">{
+    top: 50,
+    left: 100,
+    width: 200,
+    height: 300,
+    right: 300,
+    bottom: 350
+}</div>
+<h2 class="title">Element Method: getOffsetParent</h2>
+返回设置了定位的父元素.
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.getOffsetParent();</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed) 返回有定位属性的父元素，如果没有返回null。</li>
+</ul>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

@@ -1,0 +1,233 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Fx/Morph</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Class: Fx.Morph</h1>
+允许用多个css或一个css选择器设置动画.
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myFx = new Fx.Morph(element[, options]);</div> 
+
+<h3 class="subTitle">参数:</h3> 
+<ol>
+	<li>element - (mixed) 一个元素对象,或一个元素ID。</li>
+	<li>options - (object, optional) Fx选项对象。 </li>
+</ol>
+<h3 class="subTitle">返回:</h3> 
+<ul>
+	<li>(object) 一个新的Fx.Morph实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<p>使用包含多个css样式的对象:</p>
+<div class="javascript">var myEffect = new Fx.Morph('myElement', {
+    duration: 'long',
+    transition: Fx.Transitions.Sine.easeOut
+});
+ 
+myEffect.start({
+    'height': [10, 100], // Morphs the 'height' style from 10px to 100px.
+    'width': [900, 300]  // Morphs the 'width' style from 900px to 300px.
+});</div> 
+<p>使用包含多个css样式的对象,起始值省略:</p>
+<div class="javascript">var myEffect = new Fx.Morph('myElement', {
+    duration: 'short',
+    transition: Fx.Transitions.Sine.easeOut
+});
+ 
+myEffect.start({
+    'height': 100, // Morphs the height from the current to 100px.
+    'width': 300   // Morphs the width from the current to 300px.
+});</div>
+<p>使用css属性,代码与逻辑分开进非常有用:</p>
+<div class="javascript">var myEffect = new Fx.Morph('myElement', {
+    duration: 'short',
+    transition: Fx.Transitions.Sine.easeOut
+});
+ 
+myEffect.start({
+    'height': 100, // Morphs the height from the current to 100px.
+    'width': 300   // Morphs the width from the current to 300px.
+});</div>
+<h3 class="subTitle">注意事项:</h3> 
+<ul>
+	<li>此功能仅试用于简单的css选择器,如果单个类选择器,单个id选择器。</li>
+</ul>
+<h2>Fx.Morph Method: set</h2>
+设置元素的CSS属性,并立刻应用到元素上。 
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myFx.set(to);</div> 
+<h3 class="subTitle">参数:</h3> 
+<ul>
+	<li>properties - (mixed) 包含css属性的对象,或一个css选择器. 如果css样式只有一个值,则开始值从当前值计算.</li>
+</ul>
+<h3 class="subTitle">返回:</h3> 
+<ul>
+	<li>(object) 当前Fx.Morph实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myFx = new Fx.Morph('myElement').set({
+    'height': 200,
+    'width': 200,
+    'background-color': '#f00',
+    'opacity': 0
+});
+var myFx = new Fx.Morph('myElement').set('.myClass');</div> 
+<h2 class="title">Fx.Morph Method: start</h2>
+串连执行任意数量上的css属性。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myFx.start(properties);</div> 
+
+<h3 class="subTitle">参数:</h3> 
+<ul>
+	<li>properties - (mixed) 包含css属性的对象,或一个css选择器. 如果css样式只有一个值,则开始值从当前值计算.</li>
+</ul>
+<h3 class="subTitle">返回:</h3> 
+<ul>
+	<li>(object) 当前Fx.Morph实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myEffects = new Fx.Morph('myElement', {duration: 1000, transition: Fx.Transitions.Sine.easeOut});
+ 
+myEffects.start({
+    'height': [10, 100],
+    'width': [900, 300],
+    'opacity': 0,
+    'background-color': '#00f'
+});</div>
+<h1 class="t1">Object: Element.Properties</h1>
+见<a href="http://mootools.net/docs/core/Element/Element/#Element-Properties">Element.Properties</a>
+<h2 class="title">Element Property: morph</h2>
+<h3 class="subTitle">Setter</h3>
+为元素设置一个默认Fx.Morph实例.
+
+<h4 class="subTitle">语法:</h4>
+<div class="javascript">el.set('morph'[, options]);</div> 
+<h4 class="subTitle">参数:</h4> 
+<ol>
+	<li>options - (object, optional) Fx.Morph选项。</li>
+</ol>
+<h4 class="subTitle">返回:</h4> 
+<ul>
+	<li>(element) 当前元素。</li>
+</ul>
+<h4 class="subTitle">示例:</h4>
+<div class="javascript">el.set('morph', {duration: 'long', transition: 'bounce:out'});
+el.morph({height: 100, width: 100});</div> 
+
+<h3 class="subTitle">Getter</h3>
+获取元素的默认Fx.Morph实例。 
+
+<h4 class="subTitle">语法:</h4>
+<div class="javascript">el.get('morph');</div> 
+
+<h4 class="subTitle">参数:</h4> 
+<ol>
+	<li>property - (string) Fx.Morph属性参数。</li>
+</ol>
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(object)Fx.Morph实例。</li>
+</ul>
+<h4 class="subTitle">示例:</h4>
+<div class="javascript">el.set('morph', {duration: 'long', transition: 'bounce:out'});
+el.morph({height: 100, width: 100});
+el.get('morph'); // the Fx.Morph instance.</div> 
+<h1 class="t1">Type: Element</h1>
+<h2 class="title">Element Method: morph</h2>
+用元素的morph方法设置动画.
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.morph(properties);</div> 
+<h3 class="subTitle">参数:</h3> 
+<ol>
+	<li>properties - (mixed) 包含css属性的对象,或一个css选择器. 如果css样式只有一个值,则开始值从当前值计算.</li>
+</ol>
+<h3 class="subTitle">返回:</h3> 
+<ul>
+	<li>(element)这个元素。</li>
+</ul>
+<h3 class="subTitle">例如:</h3> 
+<p>用一个对象:</p>
+<div class="javascript">$('myElement').morph({height: 100, width: 200});</div>
+<p>用一个选择器:</p>
+<div class="javascript">$('myElement').morph('.class1');</div>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

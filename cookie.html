@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Cookie</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Object: Cookie</h1>
+
+读写cookie 。
+<h2 class="title">Options:</h2>
+<ul>
+	<li>domain - (string: defaults to false) cookie的所属域。</li>
+	<li>path - (string: defaults to '/') cookie的所属路径。</li>
+	<li>duration - (number: defaults to false) 过期时间。如果设置为false或0,则cookie将被设置为session(浏览器关闭cookie将被删除。</li>
+	<li>secure - (boolean: defaults to false) 存储的cookie信息只能从一个安全的环境中进行访问。</li>
+</ul>
+<h2 class="title">Cookie Method: write</h2>
+在浏览器中写一个cookie。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myCookie = Cookie.write(key, value[, options]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>key - (string) Cookie键名。</li>
+	<li>value - (string) Cookie值。不能包含分号。</li>
+	<li>options - (mixed, optional) 见以上Cookie:Options。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 一个Cookie选项。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<p>保存了个Cookie作为一个session:</p>
+<div class="javascript">var myCookie = Cookie.write('username', 'JackBauer');</div>
+<p>保存一个Cookie,一天过期.</p>
+<div class="javascript">var myCookie = Cookie.write('username', 'JackBauer', {duration: 1});</div>
+<h3 class="subTitle">注意:</h3>
+<p>为了与位于不同的路径页面共享的Cookie，则Cookie.options.domain值必须设置。</p>
+<h2 class="title">Cookie Method: read</h2>
+读取cookie的值。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myCookie = Cookie.read(name);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>name - (string) 要读取的cookie的名称。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed) cookie的字符串值，如果没有找到返回null。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">Cookie.read('username');</div>
+<h2 class="title">Cookie Method: dispose</h2>
+从浏览器删除一个cookie 。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var oldCookie = Cookie.dispose(name[, options]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>name - (string) 的cookie删除或以前保存的Cookie实例的名称。</li>
+	<li>options - (object, optional) 见Cookie:Option。</li>
+</ol>
+<h3 class="subTitle">示例:</h3>
+<p>删除Cookie:</p>
+<div class="javascript">Cookie.dispose('username'); // Bye-bye JackBauer!</div>
+<p>创建一个cookie并删除它:</p>
+<div class="javascript">var myCookie = Cookie.write('username', 'JackBauer', {domain: 'mootools.net'});
+if (Cookie.read('username') == 'JackBauer') { myCookie.dispose(); }</div>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

@@ -1,0 +1,229 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Fx</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Class: Fx</h1>
+这个类很少独自使用,但所有的Fx类的基类.
+<h2 class="title">Fx Method: constructor</h2>
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myFx = new Fx([options]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>options - (object, optional) 一个对象。详见下文。</li>
+</ol>
+<h3 class="subTitle">选项:</h3>
+<ul>
+	<li>ps - (number: defaults to 50) 帧率。</li>
+	<li>frames - (number) 帧数，默认通过持续时间与帧率计算。</li>
+	<li>frameSkip - (boolean: defaults to true) 如果设置为true，会根据当前时间计算已播放的帧数,程序卡顿时动画执行时间几乎不受影响。</li>
+	<li>unit - (string: defaults to false) 单元，例如'px'， 'em'，或'%'。</li>
+	<li>link - (string: defaults to ignore) 可以是'ignore', 'cancel'和'chain'。
+		<ul>
+			<li>'ignore' - 如果元素正在执行动画,新的动画将被忽略.</li>
+			<li>'cancel' - 如果元素正在执行动画,当前动画立刻取消,执行新动画.</li>
+			<li>'chain' - 如果元素正在执行动画,新动画将被追加到动画链,当前动画执行完后,执行新动画.</li>
+		</ul>
+	</li>
+	</li>
+	<li>duration - (number: defaults to 500) 执行间隔
+		<ul>
+			<li>"short" - 250ms</li>
+			<li>"normal" - 500ms</li>
+			<li>"long" - 1000ms</li>
+		</ul>
+	</li>
+	<li>transition - (function: defaults to 'sine:in:out' ) 动画运动方程,可以是以下值,更多详见<a href="fxTransition.html">Fx.Transitions</a>
+		<ul>
+			<li>transition[:in][:out] - 例如, 'linear', 'quad:in', 'back:in', 'bounce:out', 'elastic:out', 'sine:in:out'</li>
+		</ul>
+	</li>
+</ul>
+<h3 class="subTitle">Events:</h3>
+<ul>
+	<li>start - (function) 当动画开始时执行</li>
+	<li>cancel - (function) 当动画手动停止时执行</li>
+	<li>complete - (function) 当动画完成时执行。</li>
+	<li>chainComplete - (function) 此函数当选项link为'chain'时使用(见上选项说明)。它在链中所有动画执行完后执行</li>
+</ul>
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>你不能改变过渡曲线，如果你没有加载Fx.Transitions.js(除非你打算开发自己的曲线)</li>
+	<li>Fx类仅仅是其它类的基类</li>
+</ul>
+<h2 class="title">Fx Method: start</h2>
+开始运行一个动画,start事件被触发.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myFx.start(from[, to]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>from - (mixed) 运动的开始值。如果只有一个参数，该值将被用作目标值。</li>
+	<li>to - (mixed, optional) 运动的目标值。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) - 当前Fx的实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<ul>
+	<li>请参阅每个Fx子类文档中的例子。</li>
+</ul>
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>如果只有一个参数设置，启动第一个参数将被用作目标值，初始值从当前状态来计算。</li>
+</ul>
+<h2 class="title">Fx Method: set</h2>
+set方法在动画运行中的每一帧都会执行,也可手动设定一个值立刻应用到动画上.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myFx.set(value);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>value - (mixed) 要设置的值。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) - 当前Fx实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<ul>
+	<li>请参阅Fx子类文档中的例子。</li>
+</ul>
+<h2 class="title">Fx Method: cancel</h2>
+
+cancel方法来取消正在运行的动画。触发"cancel"事件。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myFx.cancel();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) - 当前Fx实例。</li>
+</ul>
+<h2 class="title">Fx Method: pause</h2>
+暂时停止当前正在运行的动画。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myFx.pause();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) - 当前Fx实例。</li>
+</ul>
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>如果在暂停动画时启动了另一个动画,定时器将被清除以允许另一个动画运行</li>
+</ul>
+<h2 class="title">Fx Method: resume</h2>
+继续先前暂停的动画。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myFx.resume();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) - 当前Fx实例。</li>
+</ul>
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>此方法仅对被暂停的动画有作用,其它情况将被乎略.</li>
+</ul>
+<h2 class="title">Fx Method: isRunning</h2>
+如果动画正在运行，则返回true。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var isRunning = myFx.isRunning();</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(boolean) - 如果动画正在运行，则返回true 。否则，返回false 。</li>
+</ul>
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>返回false如果动画暂停。</li>
+</ul>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

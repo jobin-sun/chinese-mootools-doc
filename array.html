@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Array</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Type: Array</h1>
+Array方法和函数的集合。
+
+<h3 class="subTitle">另请参见:</h3>
+
+<a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array">MDC Array</a>
+<h2 class="title">Function: Array.each</h2>
+
+用于遍历数组,或可迭代对象,如getElementsByTagName或函数的参数。
+
+<h3 class="subTitle">语法:</h3>
+
+Array.each(iterable, fn[, bind]);
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>iterable - (array)遍历的数组。</li>
+	<li>fn - (function)处理每个元素的函数。</li>
+	<li>bind - (object, optional)函数内可使用'this'作为该对象。欲了解更多信息,请参见:<a href="http://mootools.net/docs/core/Types/Function/#Function:bind">Function:bind</a>。</li>
+</ol>
+
+<h4>参数:fn</h4>
+
+<h5>语法:</h5>
+
+<div class="javascript">fn(item, index, object)</div>
+
+
+<h5>参数:</h5>
+<ol>
+	<li>item - (mixed) 数组中的当前项。</li>
+	<li>index - (number) 数组中的当前项的索引。如果是一个对象它是当前项的键名,而不是索引。</li>
+	<li>object - (mixed) 执行些方法的数组/对象。</li>
+</ol>
+
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">
+Array.each(['Sun', 'Mon', 'Tue'], function(day, index){
+    alert('name:' + day + ', index: ' + index);
+}); // alerts 'name: Sun, index: 0', 'name: Mon, index: 1', etc.
+</div>
+
+<h3 class="subTitle">另请参见:</h3>
+
+<a href="http://mootools.net/docs/core/Types/Array#Array:each">Array:each</a>
+
+<h2 class="title">Function: Array.clone</h2>
+
+返回数组的副本。
+
+<h3 class="subTitle">语法:</h3>
+<div class='javascript'>
+	var clone = Array.clone(myArray);
+</div>
+
+<h3 class="subTitle">参数:</h3>
+
+<ol>
+	<li>myArray - (array)你要复制的数组。</li>
+</ol>
+
+<h3 class="subTitle">返回:</h3>
+
+(array) 传入数组的副本。
+
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">
+var myArray = ['red', 'blue', 'green'];
+var otherArray = Array.clone(myArray);
+ 
+var myArray[0] = 'yellow';
+ 
+alert(myArray[0]);      // alerts 'yellow'
+alert(otherArray[0])    // alerts 'red'
+</div>
+
+<h2 class="title">Function: Array.from</h2>
+
+将传入函数转化成一数组
+
+<h3 class="subTitle">语法:</h3>
+<div class='javascript'>
+	var splatted = Array.from(obj);
+</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>obj - (mixed) 任何类型的变量。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+
+(array)如果传递的变量是一个数组,返回的数组。否则,返回一个仅包含传入变量的数组。
+<h3 class="subTitle">示例:</h3>
+
+<div class="javascript">
+Array.from('hello'); // returns ['hello'].
+Array.from(['a', 'b', 'c']); // returns ['a', 'b', 'c'].
+</div>
+
+<h2 class="title">Array method: each</h2>
+
+在数组中的每个元素调用一个函数。
+
+<h3 class="subTitle">语法:</h3>
+<div class='javascript'>
+	myArray.each(fn [bind]);
+</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>fn - (function)此数组中的每一个元素都将执行此函数,并向函数传入当前元素和当前元素在数组中的索引.</li>
+	<li>bind - (object, optional)将函数绑定在此对象上(在函数里可以用'this'代表此对象),详见<a href="function.html#Function:bind">Function:bind</a></li>
+</ol>
+
+<h4>参数:fn</h4>
+
+<h5>语法</h5>
+<div class='javascript'>
+fn(item,index,array)
+</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>item - (mixed)数组中的当前项。</li>
+	<li>index - (number)数组中的当前项的索引。</li>
+	<li>array - (array)传入数组</li>
+</ol>
+<h3>例子:</h3>
+<div class='javascript'>
+//Alerts "0 = apple", "1 = banana",等等
+['apple', 'banana', 'lemon'].each(function(item, index){
+    alert(index + " = " + item);
+}); //第二个参数可选，在这里没有使用
+</div>
+<h3>另请参见:</h3>
+
+<a href="#arrayEach">Array.each</a>
+MDC数组的forEach
+<h3 class="subTitle">注:</h3>
+
+这种方法只适用于浏览器没有原生MDC数组的forEach支持。
+
+<h2 class="title">Array method: invoke</h2>
+
+返回一个数组,命名方法应用到数组的内容。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var arr = myArray.invoke(method[, arg, arg, arg ...])
+</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>method - (string)此方法将应用到数组中的每一个项目。</li>
+	<li>arg - (mixed)不限数目的方法传入到函数一对应的方法中。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)method方法处理过的新数组.</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var foo = [4, 8, 15, 16, 23, 42];
+var bar = foo.invoke('limit', 10, 30);  //bar is now [10, 10, 15, 16, 23, 30]
+</div>
+
+<h3 class="subTitle">注:</h3>
+
+被调用的方法是每一个元素的方法,如果方法不存在,那么将抛出一个错误。例如:
+
+<div class="javascript">[0, false, 'string'].invoke('limit', 0, 10); // throws an error!
+</div>
+
+<h2 class="title">Array method: every</h2>
+
+如果数组中的每个元素满足所提供的测试函数,则返回true,此方法仅适用于没有原生支持Array:every的浏览器。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var allPassed = myArray.every(fn[, bind]);
+</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>fn - (function)测试每个元素的函数。</li>
+	<li>bind - (object, optional)将函数绑定在此对象上(在函数里可以用'this'代表此对象),详见<a href="function.html#Function:bind">Function:bind</a></li>
+</ol>
+<h4>参数:fn</h4>
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">fn(item, index, array)</div>
+
+<h5>参数:</h5>
+<ol>
+	<li>item - (mixed)数组中的当前项。</li>
+	<li>index - (number)数组中的当前项的索引。</li>
+	<li>array - (array)传入数组。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(boolean)如果数组中的每个元素满足测试函数,则返回true。否则,返回false。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">
+var areAllBigEnough = [10, 4, 25, 100].every(function(item, index){
+    return item > 20;
+}); // areAllBigEnough = false
+</div>
+<h3 class="subTitle">
+另请参见:
+</h3>
+<ul>
+	<li><a target="_blank" href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/every">MDN Array:every</a></li>
+</ul>
+
+<h2 class="title" id="array:filter">Array method: filter</h2>
+
+创建一个新的数组所有元素满足过滤函数返回true。此方法只提供给没有原生Array:filter支持的浏览器。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var filteredArray = myArray.filter(fn[, bind]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>fn - (function)此函数测试数组的每一个元素,并向此函数传递每一项和此项的索引。</li>
+	<li>bind - (object, optional)把函数绑定到此对象上(函数内部'this'代表到此对象),详见<a href='#Function:bind'>Function:bind</a></li>
+</ol>
+<h4>参数:fn</h4>
+
+<h5>语法:</h5>
+<div class="javascript">fn(item, index, array)</div>
+
+<h5>参数:</h5>
+<ul>
+	<li>item - (mixed)数组中的当前项。</li>
+	<li>index - (number)数组中的当前项的索引。</li>
+	<li>array - (array)传入数组。</li>
+</ul>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)的新的过滤阵。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">
+var biggerThanTwenty = [10, 3, 25, 100].filter(function(item, index){
+    return item > 20;
+}); // biggerThanTwenty = [25, 100]
+</div>
+<h3 class="subTitle">另请参见:</h3>
+
+<ul>
+	<li><a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/filter" target="_blank">MDN Array:filter</a></li>
+</ul>
+
+<h2 class="title">Array method: clean</h2>
+
+创建一个新的数组，包含数组中所有被定义的元素(不为null或undefined)。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var cleanedArray = myArray.clean();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)过滤后的新数组</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">
+var myArray = [null, 1, 0, true, false, 'foo', undefined, ''];
+myArray.clean() // returns [1, 0, true, false, 'foo', '']
+</div>
+
+<h2 class="title">Array method: indexOf</h2>
+返回等于指定值的第一个元素的索引,返回-1如果没有发现,此方法只针对那些没有原生<a target="_blank" href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/indexOf">Array:indexOf</a>方法的浏览器。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">
+var index = myArray.indexOf(item[, from]);
+</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(number)等于指定的第一个元素的索引。如果没有找到,则返回-1。</li>
+</ul>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>item - (object)要搜索的项的数组中。</li>
+	<li>from - (number, optional: defaults to 0)从哪个索引开始搜索。</li>
+</ol>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">
+['apple', 'lemon', 'banana'].indexOf('lemon'); // returns 1
+['apple', 'lemon'].indexOf('banana'); // returns -1
+</div>
+<h3 class="subTitle">另请参见:</h3>
+<ul>
+	<li><a target="_blank" href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/indexOf">MDN Array:indexOf</a></li>
+</ul>
+<h2 class="title">Array method: map</h2>
+
+创建一个新的数组,此数组包含处理函数的所有返回值,此方法仅适用于原生<a href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/map" target="_blank">Array:map</a>不支持的浏览器。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">
+	fn(item, index, array)
+</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>fn - (function)此函数用于为结果数组产生一新元素。</li>
+	<li>bind - (object, optional)把函数绑定到此对象上(函数内部'this'代表到此对象),详见<a href='#Function:bind'>Function:bind</a></li>
+</ol>
+
+<h4>参数:fn</h4>
+
+<h5>语法:</h5>
+<div class="javascript">fn(item, index, array)</div>
+
+<h5>参数:</h5>
+<ol>
+	<li>item - (mixed)数组中的当前项。</li>
+	<li>index - (number)数组中的当前项的索引。</li>
+	<li>array - (array)传入数组。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)映射后的新数组。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">
+var timesTwo = [1, 2, 3].map(function(item, index){
+    return item * 2;
+}); //timesTwo = [2, 4, 6];
+</div>
+<h3 class="subTitle">另请参见:</h3>
+<ul>
+	<li><a target="_blank" href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/map">MDN Array:map</a></li>
+</ul>
+
+<h2 class="title">Array method: some</h2>
+
+返回true,如果在数组中的至少一种元素满足所提供的测试函数。此方法仅适用于原生<a target="_blank" href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/some">Array:some</a>不支持的浏览器。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var somePassed = myArray.some(fn[, bind]);</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(boolean)如果数组中至少有一个元素满足测试函数返回true。否则,返回false。</li>
+</ul>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>fn - (function)的功能测试中的每个元素。此功能是通过在数组中的项目和它的索引。</li>
+	<li>bind - (object, optional)把函数绑定到此对象上(函数内部'this'代表到此对象),详见<a href='#Function:bind'>Function:bind</a></li>
+</ol>
+<h4>参数:fn</h4>
+<h5>语法:</h5>
+
+<div class="javascript">fn(item, index, array)</div>
+
+<h5>参数:</h5>
+<ol>
+	<li>item - (mixed)数组中的当前项。</li>
+	<li>index - (number)数组中的当前项的索引。</li>
+	<li>array - (array)传入的数组。</li>
+</ol>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">
+var isAnyBigEnough = [10, 4, 25, 100].some(function(item, index){
+    return item > 20;
+}); // isAnyBigEnough = true
+</div>
+<h3 class="subTitle">另请参见:</h3>
+<ul>
+	<li><a target="_blank" href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/some">MDN Array:some</a></li>
+</ul>
+
+<h2 class="title">Array method: associate</h2>
+创建一个key-value对象,数组的当前内容为value，传入的数组为key。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var associated = myArray.associate(obj);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>obj - (array)作为新生成对象的键。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object)新生成的key-value对象</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">
+var animals = ['Cow', 'Pig', 'Dog', 'Cat'];
+var sounds = ['Moo', 'Oink', 'Woof', 'Miao'];
+sounds.associate(animals);
+// returns {'Cow': 'Moo', 'Pig': 'Oink', 'Dog': 'Woof', 'Cat': 'Miao'}
+</div>
+
+<h2 class="title">Array method: link</h2>
+
+接受一个(Key:function)对象。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var result = myArray.link(object);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>object - (object)Key:function对象,作为返回对象的模板。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object)返回关联对象。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">var el = document.createElement('div');
+var arr2 = [100, 'Hello', {foo: 'bar'}, el, false];
+arr2.link({
+    myNumber: Type.isNumber,
+    myElement: Type.isElement,
+    myObject: Type.isObject,
+    myString: Type.isString,
+    myBoolean: function(obj){ return obj != null; }
+});
+// returns {myNumber: 100, myElement: el, myObject: {foo: 'bar'}, myString: 'Hello', myBoolean: false}
+</div>
+
+<h2 class="title">Array method: contains</h2>
+测试一个元素是否在此数组中
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var inArray = myArray.contains(item[, from]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>item - (object)要测试的元素。</li>
+	<li>from - (number, optional: defaults to 0)从哪个索引开始测试，默认从0。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(boolean)如果数组包含指定的元素,则返回true,否则返回false。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">
+['a', 'b', 'c'].contains('a'); // returns true
+['a', 'b', 'c'].contains('d'); // returns false
+</div>
+<h3 class="subTitle">另请参见:</h3>
+<ul>
+	<li><a target="_blank" href="https://developer.mozilla.org/en/Core_JavaScript_1.5_Reference/Global_Objects/Array/indexOf">MDN Array:indexOf</a></li>
+</ul>
+
+<h2 class="title">Array method: append</h2>
+
+追加传递的数组在当前数组的最后。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var myArray = myArray.append(otherArray);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>otherArray - (array)要追加的数组。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)追加后的新数组。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">
+var myOtherArray = ['green', 'yellow'];
+['red', 'blue'].append(myOtherArray); // returns ['red', 'blue', 'green', 'yellow'];
+ 
+[0, 1, 2].append([3, [4]]); // [0, 1, 2, 3, [4]]
+</div>
+
+<h2 class="title">Array method: getLast</h2>
+
+返回从数组中的最后一个项目。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">myArray.getLast();</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)这个数组中的最后一项。</li>
+	<li>(null)如果该数组为空,则返回null。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+
+<div class="javascript">['Cow', 'Pig', 'Dog', 'Cat'].getLast(); // returns 'Cat'</div>
+
+<h2 class="title">Array method: getRandom</h2>
+
+从数组中返回一个随机项。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myArray.getRandom();</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)随机从这个数组中返回一项。如果这个数组为空,则返回null。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+
+<div class="javascript">['Cow', 'Pig', 'Dog', 'Cat'].getRandom(); // returns one of the items</div>
+
+<h2 class="title">Array method: include</h2>
+push一个元素，如果它在数组中不存在（大小写类型敏感）。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">myArray.include(item);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>item - (object)要增加的元素。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)包含新元素的数组。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">['Cow', 'Pig', 'Dog'].include('Cat'); // returns ['Cow', 'Pig', 'Dog', 'Cat']
+['Cow', 'Pig', 'Dog'].include('Dog'); // returns ['Cow', 'Pig', 'Dog']</div>
+<h3 class="subTitle">注:</h3>
+如果你想push一个元素即使它已经存在使用原生Javascript:
+<div class="javascript">myArray.push(item);</div>
+
+<h2 class="title">Array method: combine</h2>
+
+联合两个数组，不允许重复，大小写类型敏感。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">myArray.combine(array);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>array - (array)需要联合的数组。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)联合后的新数组。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+
+<div class="javascript">var animals = ['Cow', 'Pig', 'Dog'];
+animals.combine(['Cat', 'Dog']); //animals = ['Cow', 'Pig', 'Dog', 'Cat'];
+</div>
+
+<h2 class="title">Array method: erase</h2>
+
+从数组中删除一个或多个相同项。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">myArray.erase(item);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>item - (object)要删除的项。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)删除指定项后的数组。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+
+<div class="javascript">['Cow', 'Pig', 'Dog', 'Cat', 'Dog'].erase('Dog') // returns ['Cow', 'Pig', 'Cat']
+['Cow', 'Pig', 'Dog'].erase('Cat') // returns ['Cow', 'Pig', 'Dog']</div>
+
+<h2 class="title">Array method: empty</h2>
+
+清空一个数组。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myArray.empty();</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)返回清空后的数组。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">var myArray = ['old', 'data'];
+myArray.empty(); //myArray is now []
+</div>
+
+<h2 class="title">Array method: flatten</h2>
+
+转换一个多维数组到一维数组。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myArray.flatten();</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)转换后的一维数组。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">var myArray = [1,2,3,[4,5, [6,7]], [[[8]]]];
+var newArray = myArray.flatten(); //newArray is [1,2,3,4,5,6,7,8]</div>
+
+<h2 class="title">Array method: pick</h2>
+
+返回数组中第一个已定义的元素,或返回null。
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">var picked = [var1, var2, var3].pick();</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)第一个已定义的元素。</li>
+	<li>(null)如果所有元素是null或undefined,则返回null。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+
+<div class="javascript">function say(infoMessage, errorMessage){
+    alert([errorMessage, infoMessage, 'There was no message supplied.'].pick());
+ 
+    //or more MooTools 1.2 style using Generics
+    Array.pick([errorMessage, infoMessage, 'There was no message supplied.']);
+ 
+}
+say(); // alerts 'There was no message supplied.'
+say('This is an info message.'); // alerts 'This is an info message.'
+say('This message will be ignored.', 'This is the error message.'); // alerts 'This is the error message.'
+</div>
+<h3 class="subTitle">注:</h3>
+
+这是相当于MooTools 1.2的$pick。
+
+<h2 class="title">Array method: hexToRgb</h2>
+
+转换为十六进制的颜色到RGB。输入数组必须是以下格式十六进制的颜色:['FF','FF','FF']
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">myArray.hexToRgb([array]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>array - (boolean, optional)如果为true,将输出一个数组(e.g.[255,51,0]),否则输出一个字符串(e.g."rgb(255, 51, 0)")。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(string)字符串,rgb格式的颜色。</li>
+	<li>(array)如果传入参数为true,将返回一个数组。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">['11', '22', '33'].hexToRgb(); // returns 'rgb(17, 34, 51)'
+['11', '22', '33'].hexToRgb(true); // returns [17, 34, 51]</div>
+<h3 class="subTitle">另请参见:</h3>
+<ul>
+	<li><a href="string.html">String:hexToRgb</a></li>
+</ul>
+
+<h2 class="title">Array method: rgbToHex</h2>
+转换rgb格式到十六进制格式。输入的rgb必须是以下格式:[255, 255, 255]或[255, 255, 255, 1].
+
+<h3 class="subTitle">语法:</h3>
+
+<div class="javascript">myArray.rgbToHex([array]);</div>
+
+<h3 class="subTitle">参数:</h3>
+
+<ol>
+	<li>array - (boolean, optional)如果传入true,将输出一个数组(e.g.['FF','33','00']),否则返回一个string(e.g. '#ff3300')。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(string)一个十六进制的颜色,或'transparent'如果rgba的第四个值是0。</li>
+	<li>(array)如查输入参数为真，则返回一数组。</li>
+</ul>
+<h3 class="subTitle">例子:</h3>
+<div class="javascript">[17, 34, 51].rgbToHex(); // returns '#112233'
+[17, 34, 51].rgbToHex(true); // returns ['11', '22', '33']
+[17, 34, 51, 0].rgbToHex(); // returns 'transparent'</div>
+<h3 class="subTitle">另请参见:</h3>
+<ul>
+	<li><a href="string.html">String:rgbToHex</a></li>
+</ul>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

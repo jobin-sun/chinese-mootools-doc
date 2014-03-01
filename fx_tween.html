@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Fx/Tween</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Class: Fx.Tween</h1>
+包含Fx.Tween和创建动画的快捷方式Element.tween 。
+<h2 class="title">Fx.Tween Method: constructor</h2>
+
+补间效果，用于从一个CSS属性值转到另一个CSS属性值。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myFx = new Fx.Tween(element, [, options]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>element - (mixed) 元素或元素id 。</li>
+	<li>options - (object, optional) Fx options对象，下面详细描述:</li>
+</ol>
+<h4 class="subTitle">Options</h4>
+<ul>
+	<li>property - (string) CSS属性，例如'width'，'color'，'font-size'，'border'等，默认为null。</li>
+</ul>
+
+<h3 class="subTitle">示例:</h3>
+<p>当单击元素时,高度将变换(event.stop()阻止浏览器的默认行为),用bounce:out变换方程,
+使用link:cancle当动画正在进行时,立刻结束当前动画执行新动画,当开始值忽略时,当前值将被应用.</p>
+<div class="javascript">var myFx = new Fx.Tween('myElement', {
+    duration: 'long',
+    transition: 'bounce:out',
+    link: 'cancel',
+    property: 'height'
+});
+ 
+document.id('myLink').addEvent('click', function(event){
+    event.stop();
+    myFx.start(40, 100);
+});</div>
+<p>
+也可以使用元素的方法:.get('tween')和.set('tween')和tween方法设置tween动画,以下展示使用元素的set方法设置tween动画.
+</p>
+<div class="javascript">var myElement = document.id('myElement');
+myElement.set('tween', {
+    duration: 'long',
+    transition: 'bounce:out',
+    link: 'cancel'
+});
+ 
+document.id('myLink').addEvent('click', function(event){
+    event.stop();
+    myElement.tween('height', 40, 100);
+});</div>
+<h2 class="title">Fx.Tween Method: set</h2>
+设置元素的css属性并立刻应用到元素上。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myFx.set(property, value);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>property - (string) CSS样式名。</li>
+	<li>value - (mixed) CSS样式值。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 当前Fx.Tween实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myFx = new Fx.Tween(element);
+// sets the background color of the element to red:
+myFx.set('background-color', '#f00');</div>
+
+<h2 class="title">Fx.Tween Method: start</h2>
+开始执行动画。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myFx.start([property,] [from,] to);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>property - (string, if not in options) css样式名。</li>
+	<li>from - (mixed, optional) css样式起始值。</li>
+	<li>to - (mixed) css样式结束值。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 当前Fx.Tween实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myFx = new Fx.Tween(element);
+// transitions the background color of the Element from black to red:
+myFx.start('background-color', '#000', '#f00');
+// transitions the background color of the Element from its current color to blue:
+myFx.start('background-color', '#00f');</div>
+<h1 class="t1">Object: Element.Properties</h1>
+
+看<a href="http://mootools.net/docs/core/Element/Element/#Element-Properties">Element.Properties</a>
+
+<h2 class="title">Element Property: tween</h2>
+设置和获取元素Fx.Tween实例的默认选项。
+<h3 class="subTitle">Setter:</h3>
+<h4 class="subTitle">语法:</h4>
+<div class="javascript">el.set('tween'[, options]);</div>
+<h4 class="subTitle">参数:</h4>
+<ul>
+	<li>options - (object) Fx.Tween选项。</li>
+</ul>
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(element) 当前元素。</li>
+</ul>
+<h4 class="subTitle">示例:</h4>
+<div class="javascript">el.set('tween', {duration: 'long'});
+el.tween('color', '#f00');</div>
+<h3 class="subTitle">Getter:</h3>
+<h4 class="subTitle">语法:</h4>
+<div class="javascript">el.get('tween');</div>
+<h4 class="subTitle">参数:</h4>
+<ol>
+	<li>property - (string) Fx.Tween属性参数。</li>
+</ol>
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(object) 元素内部Fx.Tween实例。</li>
+</ul>
+<h4 class="subTitle">示例:</h4>
+<div class="javascript">el.get('tween').start(0);</div>
+<h1 class="t1">Type: Element</h1>
+自定义类型，其所有的方法，通过$函数生成的对象使用。
+
+<h2 class="title">Element Method: tween</h2>
+执行tween动画的快捷方法.
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.tween(property, startValue[, endValue]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>property - (string) 要执行动画的css样式。</li>
+	<li>startValue - (mixed) 样式的开始值。</li>
+	<li>endValue - (mixed) 样式的结束值。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element) 当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">// transitions the width of 'myElement' from its current width to 100px:
+$('myElement').tween('width', '100');
+// transitions the height of 'myElement' from 20px to 200px:
+$('myElement').tween('height', [20, 200]);
+// transitions the border of 'myElement' from its current to '6px solid blue':
+$('myElement').tween('border', '6px solid #36f');</div>
+
+<h2 class="title">Element Method: fade</h2>
+设置元素淡入淡出的快捷方法.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.fade([how]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>how - (mixed, optional: defaults to 'toggle') 透明值:
+		<ul>
+			<li>'in'- 淡入透明度到100%.</li>
+			<li>'out'- 淡出透明度到0%.</li>
+			<li>'show'- 立即设置透明度到100%.</li>
+			<li>'hide'- 立即设置透明度到0%.</li>
+			<li>'toggle'- 如果可见,淡出,如果不可见,淡入.</li>
+			<li>(number)- 0和1之间的一个浮点值,元素将从当前值渐变到此值.</li>
+		</ul>
+	</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">$('myElement').fade('out'); // fades 'myElement' out.
+$('myElement').fade(0.7); // fades 'myElement' to 70% opacity.</div>
+
+<h2 class="title">Element Method: highlight</h2>
+设置闪烁背景的快捷动画,立即转换元素背景色为指定颜色,然后再变回来.
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.highlight([start, end]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>start - (string, optional: defaults to '#ff8') 起始色。</li>
+	<li>end - (string, optional: defaults to Element's set background-color) 高亮时的颜色。</li>
+</ol>
+<h3 class="subTitle">注意:</h3>
+如果元素没有背景色被设置,或者背景色为'transparent',默认值是白色.
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element) 当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">//immediately changes the background to light blue, then back to its original color (or white):
+$('myElement').highlight('#ddf');
+ 
+//immediately changes the background to light blue, then fades to grey:
+$('myElement').highlight('#ddf', '#ccc');</div>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

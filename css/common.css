@@ -1,0 +1,26 @@
+body {font-family: Helvetica;color: #313334;background: #F9F9F9;margin: 0;padding: 0;font-size:90%;}
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {margin: 0;padding: 0;border: 0;vertical-align: baseline;}
+h1, h2, h3, h4, h5, h6{margin:0.5em 0;}
+.title{color: #78BA91;text-decoration: none;font-size:2em;margin: 0.25em 0;}
+.subTitle{color: #313334;font-weight: bold;margin: 0.25em 0;}
+.javascript{background: #ffd;border-top: 1px solid #EEE;border-bottom: 1px solid #EEE;padding: 5px 7px;overflow: auto;font-size: 12px;white-space: pre;margin: 0.25em 0;}
+.t1{color: #c17878;border-bottom: 1px solid #ddd;padding-bottom: 0.3em;font-size: 2.5em;margin-bottom: 0.5em;}
+ul,ol{padding-left:2em;}
+ul{list-style-type: disc;}
+#content{width:1000px;margin:0 auto;position:relative;top:0;left:0;}
+#logoTxt{height: 19px;width: 233px;background: url(../images/subtitle.png) center left no-repeat;margin-left: 5px;margin-top: 5px;}
+#logoTxt span{display:none}
+#logo a{display: block;width: 184px;height: 46px;background: url(../images/mootools.png) center left no-repeat;}
+#logo span{display:none;}
+#left{width:175px;float:left;padding-right:1em;}
+#right{width:750px;float:left;padding-left:1em;border-left: 1px solid #ddd;}
+.clear{clear:both;}
+.docLicenses{text-align:center;padding:25px 0;}
+.copy{text-align:center;padding:0 0 30px 0;}
+.tree1{}
+.treeTitle{font-weight: bold;border-bottom: 1px solid #ddd;margin: 10px 0;color: #313334;font-size: 1.2em;text-align:left;}
+.treeItem{}
+.treeItem a{display: block;text-align:right}
+.treeItem a:hover,.treeItem a:active {color: #e79d35;}
+#notify{position:absolute;top:0;right:0;height:50px;}
+.version{text-align:center;font-size:0.75em}

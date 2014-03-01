@@ -1,0 +1,1480 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Element</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Type: Window</h1>
+下面的函数将被视为Window方法。
+<h2 class="title">Function: document.id</h2>
+该函数有两个目的,一个通过ID取得元素.取得所有Element对像的方法(扩展一元素为mootools元素).
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myElement = document.id(el);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>
+		el - 可以是以下类型:
+		<ul>
+			<li>(element) 元素将被扩展,如果还没有扩展。</li>
+			<li>(string) 元素ID。</li>
+			<li>(object)如果对象有一个toElement方法，toElement将被调用来获取元素。</li>
+		</ul>
+	</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)一个DOM元素。</li>
+	<li>(null)Null，如果没有找到元素，或toElement没有返回元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h4>通过ID取得元素:</h4>
+<div class="javascript">var myElement = document.id('myElement');</div>
+<h4>通过元素引用:</h4>
+<div class="javascript">var div = document.getElementById('myElement');
+div = document.id(div); // the element with all the Element methods applied.</div>
+
+<h2 class="title">Function: $</h2>
+$函数是document.id函数的别名,如果$被其它javascript库使用,Mootools将不重写$.(不建议使用多个冲突的js库)
+
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myElement = $('myElement');
+var myElement2 = document.id('myElement');
+ 
+myElement == myElement2; // returns true
+ 
+ 
+(function($){
+ 
+    // Now you can use $ safely in this closure
+ 
+})(document.id)</div>
+
+<h2 class="title">Function: $$</h2>
+
+选择和扩展DOM元素。返回一组元素实例。返回的这组元素实例是一个类似数组的对象，支持每个数组的方法，每一个元素的方法。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myElements = $$(argument);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ul>
+	<li>selector - (string)一个CSS选择器</li>
+	<li>elements - (elements)(collection)或(array)元素的一个枚举列表</li>
+	<li>element, element - (element)任意数量的元素作为参数</li>
+</ul>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(elements) - 一个类数组的元素集合,已经被document.id扩展为mootools Elemment对象.</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h4>通过标签名:</h4>
+<div class="javascript">$$('a'); // returns all anchor elements in the page.</div>
+<h4>通过多个元素实例:</h4>
+<div class="javascript">$$(element1, element2, element3); // returns an Elements instance containing these 3 elements.</div>
+<h4>通过一个元素集合:</h4>
+<div class="javascript">$$([element1, element2, element3]); // returns an Elements instance containing these 3 elements.
+$$(document.getElementsByTagName('a')); // returns an Elements instance containing the result of the getElementsByTagName call.</div>
+<h4>通过CSS选则器:</h4>
+<div class="javascript">$$('#myElement'); // returns an Elements instance containing only the element with the id 'myElement'.
+$$('#myElement a.myClass'); // returns an Elements instance of all anchor tags with the class 'myClass' within the DOM element with id 'myElement'.
+$$('a, b'); // returns an array of all anchor and bold elements in the page.</div>
+
+<h1 class="t1">Type: Element</h1>
+
+自定义类型。
+<h2 class="title">Element Method: constructor</h2>
+创建新元素.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myEl = new Element(element[, properties]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>element - (mixed)为要创建的元素或一个实际的DOM元素或CSS选择器的标签名称。</li>
+	<li>properties - (object, optional)设置元素属性。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)一个新的MooTools扩展后的HTML元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">// Creating an new anchor with an Object
+var myAnchor = new Element('a', {
+    href: 'http://mootools.net',
+    'class': 'myClass',
+    html: 'Click me!',
+    styles: {
+        display: 'block',
+        border: '1px solid black'
+    },
+    events: {
+        click: function(){
+            alert('clicked');
+        },
+        mouseover: function(){
+            alert('mouseovered');
+        }
+    }
+});
+ 
+// Using Selectors
+var myNewElement = new Element('a.myClass');</div>
+<h3 class="subTitle">注意:</h3>
+
+
+因为元素名称解析为一个CSS选择器，所以冒号必须转义。因此，new Element('fb\:name)成为&lt;fb:name&gt;。
+<h2 class="title">Element Method: getElement</h2>
+
+取得第一个子元素。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myElement = myElement.getElement(tag);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>tag - (string)一个CSS选择器的名称。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)如果找到一个匹配，元素将被返回。否则，返回null。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var firstDiv = $(document.body).getElement('div');</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<h2 class="title">Element Method: getElements</h2>
+根据CSS选择器取得元素数组.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myElements = myElement.getElements(tag);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>tag - (string) 一个CSS选择器。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)元素数组(所有匹配的元素)。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var allAnchors = $(document.body).getElements('a');</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>这种方法也可用于Document对象。</li>
+	<li>默认支持的CSS选择器与<a target="_blank" href="http://www.w3.org/TR/css3-selectors/#selectors">W3C CSS3 selectors一样</a>。</li>
+</ul>
+<h2 class="title">Element Method: getElementById</h2>
+
+通过ID取得元素。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myElement = anElement.getElementById(id);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>id - (string)要获取的元素的ID。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)如果找到此元素，返回该元素。否则，返回null。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myChild = $('myParent').getElementById('myChild');</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>此方法不支持没有原生document.getElementById函数的浏览器。</li>
+</ul>
+<h2 class="title">Element Method: set</h2>
+
+设置元素属性.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.set(arguments);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ul>
+	<li>两个参数(属性,值)
+		<ul>
+			<li>property - (string)属性名.</li>
+			<li>value - (mixed)属性值.</li>
+		</ul>
+	</li>
+	<li>一个参数(多个属性)
+		<ul>
+			<li>properties - (object)一个对象包含多个属性(属性名/属性值).</li>
+		</ul>
+	</li>
+</ul>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h4>两个参数:</h4>
+<div class="javascript">$('myElement').set('text', 'text goes here');
+$('myElement').set('class', 'active');
+// the 'styles' property passes the object to Element:setStyles.
+var body = $(document.body).set('styles', {
+    font: '12px Arial',
+    color: 'blue'
+});</div>
+<h4>一个参数:</h4>
+<div class="javascript">var myElement = $('myElement').set({
+    // the 'styles' property passes the object to Element:setStyles.
+    styles: {
+        font: '12px Arial',
+        color: 'blue',
+        border: '1px solid #f00'
+    },
+    // the 'events' property passes the object to Element:addEvents.
+    events: {
+        click: function(){ alert('click'); },
+        mouseover: function(){ this.addClass('over'); }
+    },
+    //Any other property uses Element:setProperty.
+    id: 'documentBody'
+});</div>
+<h2 class="title">Element Method: get</h2>
+
+取得元素属性。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.get(property);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>property - (string)属性名。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)属性值(调用Element.Properties对象中'get'函数得到的结果)。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h4>用自定义Getters:</h4>
+<div class="javascript">var tag = $('myDiv').get('tag'); // returns "div".</div>
+<h4>取得原生元素属性:</h4>
+<div class="javascript">var id = $('myDiv').get('id'); // returns "myDiv".
+var value = $('myInput').get('value'); // returns the myInput element's value.
+</div>
+<h2 class="title">Element Method: erase</h2>
+移除一个元素的属性。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.erase(property);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>property - (string)调用Element.Properties对象的'erase'方法移除一个属性。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>调用Element.Properties对象的'erase'函数,返回值为erase函数的返回值.</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">$('myDiv').erase('id'); //Removes the id from myDiv.
+$('myDiv').erase('class'); //myDiv element no longer has any class names set.</div>
+<h3 class="subTitle">注意:</h3>
+<ul>
+	<li>如果相应的Element.Properties对象不存在'erase'方法，元素的'removeProperty'函数将被调用.</li>
+</ul>
+<h2 class="title">Element Method: match</h2>
+
+测试此元素，看它是否与传入的参数匹配
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.match(match);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>match - 可以是一个字符串或元素
+		<ul>
+			<li>(string)标签名称，或单一的CSS选择器。</li>
+			<li>(element)一个元素，如果两元素相同,则返回true</li>
+		</ul>
+	</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(boolean)如果元素匹配，返回true 。否则，返回false 。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h4>用一个标签:</h4>
+<div class="javascript">// returns true if #myDiv is a div.
+$('myDiv').match('div');</div>
+<h4>用CSS选择器:</h4>
+<div class="javascript">// returns true if #myDiv has the class foo and is named "bar"
+$('myDiv').match('.foo[name=bar]');</div>
+<h4>用一个元素:</h4>
+<div class="javascript">var el = $('myDiv');
+$('myDiv').match(el); // returns true
+$('otherElement').match(el); // returns false</div>
+
+<h2 class="title">Element Method: contains</h2>
+
+检查是否包含某元素。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var result = myElement.contains(el);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>el - (element)要搜索的元素。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(Boolean)返回true，如果包含某元素.否则为false。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h4>HTML</h4>
+<div class="javascript">&lt;div id="Darth_Vader"&gt;
+    &lt;div id="Luke"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+<h4>JavaScript</h4>
+<div class="javascript">if ($('Darth_Vader').contains($('Luke'))) alert('Luke, I am your father.'); //tan tan tannn...</div>
+<h2 class="title">Element Method: inject</h2>
+在某个元素中注入或插入另一个元素.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.inject(el[, where]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>el - (mixed) 可以是元素对象或元素的id 。</li>
+	<li>where - (string, optional: defaults to 'bottom') 注入元素的位置。可以'top'，'bottom'，'after','before'。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>Javascript</h5>
+<div class="javascript">var myFirstElement  = new Element('div', {id: 'myFirstElement'});
+var mySecondElement = new Element('div', {id: 'mySecondElement'});
+var myThirdElement  = new Element('div', {id: 'myThirdElement'});</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myFirstElement"&gt;&lt;/div&gt;
+	&lt;div id="mySecondElement"&gt;&lt;/div&gt;
+	&lt;div id="myThirdElement"&gt;&lt;/div&gt;</div>
+<h4>注入到底部:</h4>
+<h5>Javascript</h4>
+<div class="javascript">myFirstElement.inject(mySecondElement);</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="mySecondElement"&gt;
+    &lt;div id="myFirstElement"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+
+<h4>注入到顶端:</h4>
+<h5>Javascript</h5>
+<div class="javascript">myThirdElement.inject(mySecondElement, 'top');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="mySecondElement"&gt;
+    &lt;div id="myThirdElement"&gt;&lt;/div&gt;
+    &lt;div id="myFirstElement"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+<h4>注入前端:</h4>
+<h5>Javascript</h5>
+<div class="javascript">myFirstElement.inject(mySecondElement, 'before');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myFirstElement"&gt;&lt;/div&gt;
+	&lt;div id="mySecondElement"&gt;&lt;/div&gt;</div>
+<h4>注入后端:</h4>
+<h5>Javascript</h5>
+<div class="javascript">myFirstElement.inject(mySecondElement, 'after');</div>
+<h4>生成的HTML</h4>
+<div class="javascript">&lt;div id="mySecondElement"&gt;&lt;/div&gt;
+	&lt;div id="myFirstElement"&gt;&lt;/div&gt;</div>
+<h2 class="title">Element Method: grab</h2>
+<p>与Element:inject工作原理相似,但是反向的.</p>
+<p>附加元素在相对于元素的子元素的特定位置(由所在参数指定) 。</p>
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.grab(el[, where]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>el - (mixed) 可以是一个元素或元素的id。</li>
+	<li>where - (string, optional: default 'bottom')来追加该元素的地方。可以是"top"，"bottom"，"before"或"after"。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="first"&gt;
+    	&lt;div id="child"&gt;&lt;/div&gt;
+	&lt;/div&gt;</div>
+<h5>Javascript</h5>
+<div class="javascript">var mySecondElement = new Element('div#second');
+$('first').grab(mySecondElement);</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="first"&gt;
+    &lt;div id="child"&gt;&lt;/div&gt;
+    &lt;div id="second"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+<h5>Javascript</h5>
+<div class="javascript">var mySecondElement = new Element('div#second');
+myFirstElement.grab(mySecondElement, 'top');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="first"&gt;
+    &lt;div id="second"&gt;&lt;/div&gt;
+    &lt;div id="child"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+<h2 class="title">Element Method: adopt</h2>
+<p>如Element:grab,但可以允许多个元素追加到底部.</p>
+<p>在一个元素内部插入一新元素。</p>
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myParent.adopt(el[, others]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>el - (mixed) 一个元素或一个元素的数组或一个元素的ID。</li>
+	<li>others - (mixed, optional) 一个或更多逗号分隔的元素,或一个数组。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>Javascript</h5>
+<div class="javascript">var myFirstElement  = new Element('div#first');
+var mySecondElement = new Element('p#second');
+var myThirdElement  = new Element('ul#third');
+var myFourthElement = new Element('a#fourth');
+ 
+var myParentElement = new Element('div#parent');
+ 
+myFirstElement.adopt(mySecondElement);
+mySecondElement.adopt(myThirdElement, myFourthElement);
+myParentElement.adopt([myFirstElement, new Element('span#another')]);</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="parent"&gt;
+    &lt;div id="first"&gt;
+        &lt;p id="second"&gt;
+            &lt;ul id="third"&gt;&lt;/ul&gt;
+            &lt;a id="fourth"&gt;&lt;/a&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span id="another"&gt;&lt;/span&gt;
+&lt;/div&gt;</div>
+
+<h2 class="title">Element Method: wraps</h2>
+与Element:grab相似,但此方法加包裹指定元素,并替换指定元素原来的位置.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myParent.wraps(el[, where]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>el - (mixed)元素或元素的ID 。</li>
+	<li>where - where - (string, optional: default 'bottom')要插入的位置。可以是"top"或"bottom" 。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="first"&gt;&lt;/div&gt;</div>
+<h5>Javascript</h5>
+<div class="javascript">var mySecondElement = new Element('div#second').wraps('first');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="second"&gt;
+    &lt;div id="first"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="first"&gt;&lt;/div&gt;
+&lt;div id="second"&gt;
+    &lt;div id="child"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+<h5>Javascript</h5>
+<div class="javascript">$('second').wraps('first');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="second"&gt;
+    &lt;div id="child"&gt;&lt;/div&gt;
+    &lt;div id="first"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+<h5>Javascript</h5>
+<div class="javascript">$('second').wraps('first', 'top');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="second"&gt;
+    &lt;div id="first"&gt;&lt;/div&gt;
+    &lt;div id="child"&gt;&lt;/div&gt;
+&lt;/div&gt;</div>
+
+<h2 class="title">Element Method: appendText</h2>
+向元素内部追回文本.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.appendText(text[, where]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>text - (string)要追加的文本。</li>
+	<li>where - (string, optional: default 'bottom') 文本的注入位置。可以是'top','bottom','before','after' 。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素的实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;Hey.&lt;/div&gt;</div>
+<h5>Javascript</h5>
+<div class="javascript">$('myElement').appendText(' Howdy.');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;Hey. Howdy.&lt;/div&gt;</div>
+<h2 class="title">Element Method: dispose</h2>
+
+从DOM中移除元素。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var removedElement = myElement.dispose();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)被删除的元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;&lt;/div&gt;
+&lt;div id="mySecondElement"&gt;&lt;/div&gt;</div>
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').dispose();</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="mySecondElement"&gt;&lt;/div&gt;</div>
+<h2 class="title">Element Method: clone</h2>
+克隆一个元素，并返回克隆体。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var copy = myElement.clone([contents, keepid]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>contents - (boolean,optional:defaults true )当设置为false的元素的内容不被克隆。</li>
+	<li>keepid - (boolean, optional: defaults to false) 如果为true克隆的元素保留id.同样适用于任何克隆的子节点。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)克隆的元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;ciao&lt;/div&gt;</div>
+<h5>JavaScript</h5>
+<div class="javascript">// clones the Element and appends the clone after the Element.
+var clone = $('myElement').clone().inject('myElement','after');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;ciao&lt;/div&gt;
+&lt;div&gt;ciao&lt;/div&gt;</div>
+<h2 class="title">Element Method: replaces</h2>
+
+替换元素。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var element = myElement.replaces(el);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>el - (mixed)一个元素ID或一个元素对象。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">$('myNewElement').replaces($('myOldElement'));
+//$('myOldElement') is gone, and $('myNewElement') is in its place.</div>
+
+<h2 class="title">Element Method: hasClass</h2>
+测试元素是否有某class.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var result = myElement.hasClass(className);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>className - (string)class的名字。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(boolean)返回true如果元素具有此类，否则为false。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement" class="testClass"&gt;&lt;/div&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').hasClass('testClass'); // returns true</div>
+<h2 class="title">Element Method: addClass</h2>
+为元素增加一个类.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.addClass(className);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>className - (string) 要添加的类名。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement" class="testClass"&gt;&lt;/div&gt;</div>
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').addClass('newClass');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myElement" class="testClass newClass"&gt;&lt;/div&gt;</div>
+<h2 class="title">Element Method: removeClass</h2>
+删除元素的一个类.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.removeClass(className);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>className - (string)要删除的类名。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement" class="testClass newClass"&gt;&lt;/div&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').removeClass('newClass');</div>
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myElement" class="testClass"&gt;&lt;/div&gt;</div>
+<h2 class="title">Element Method: toggleClass</h2>
+切换类,如果已存在则删除,如果不存在则添加。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.toggleClass(className, force);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>className - (string)要添加或删除的类。</li>
+	<li>force - (boolean, optional)是否强制执行.</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement" class="myClass"&gt;&lt;/div&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').toggleClass('myClass');</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myElement" class=""&gt;&lt;/div&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').toggleClass('myClass');</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myElement" class="myClass"&gt;&lt;/div&gt;</div>
+
+<h2 class="title">Element Method: getPrevious</h2>
+返回前一个兄弟元素节点,不包含纯文本节点.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var previousSibling = myElement.getPrevious([match]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>match - (string, optional)一个CSS选择器。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)返回前一个兄弟元素,如果没有发现返回null</li>
+</ul>
+<h2 class="title">Element Method: getAllPrevious</h2>
+与Element:getPrevious类似,但返回元素之前所有匹配的元素.
+
+<h2 class="title">Element Method: getNext</h2>
+返回后一个兄弟元素节点,不包含纯文本节点.。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var nextSibling = myElement.getNext([match]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>match - (string, optional)一个CSS选择器。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)返回下一个兄弟元素,如果没有发现返回null</li>
+</ul>
+<h2 class="title">Element Method: getAllNext</h2>
+
+与Element.getNext类似,但返回元素之后所有匹配的元素.
+
+<h2 class="title">Element Method: getFirst</h2>
+
+得到第一个匹配的元素。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var firstElement = myElement.getFirst([match]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>match - (string, optional) 一个CSS选择器。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)返回匹配的第一个元素,如果没有找到返回null。</li>
+</ul>
+<h2 class="title">Element Method: getLast</h2>
+得到第一个匹配的元素.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var lastElement = myElement.getLast([match]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>match - (string, optional) 一个CSS选择器。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)返回匹配到的最后一个元素，如果没有找到则返回null。</li>
+</ul>
+<h2 class="title">Element Method: getParent</h2>
+返回父节点.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var parent = myElement.getParent([match]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>match - (string, optional)一个CSS选择器。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)返回父节点，如果没有发现返回null。</li>
+</ul>
+<h2 class="title">Element Method: getParents</h2>
+从当前元素延节点树向上匹配,返回所有匹配到的节点集合.
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)返回父类数组，如果没有父类返回一个空数组。</li>
+</ul>
+<h2 class="title">Element Method: getSiblings</h2>
+返回元素的兄弟节点,不包含纯文本节点。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var siblings = myElement.getSiblings([match]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>match - (string, optional)一个CSS选择器。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array) 兄弟元素数组，不包含纯文本节点。</li>
+</ul>
+<h2 class="title">Element Method: getChildren</h2>
+
+返回所有元素的子元素(不包括文本节点)。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var children = myElement.getChildren([match]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ul>
+	<li>match - (string, optional)一个CSS选择器。</li>
+</ul>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array) 元素的子元素，除了文本节点。</li>
+</ul>
+<h3 class="subTitle">注意:</h3>
+
+getChildren和getElements的区别在于,getChildren返回直接子元素,getElements返回任何深度的子元素.
+
+<h2 class="title">Element Method: empty</h2>
+清空一个元素的所有子元素。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.empty();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;
+    &lt;p&gt;&lt;/p&gt;
+    &lt;span&gt;&lt;/span&gt;
+&lt;/div&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').empty();</div>
+<h5>生成的HTML<h5>
+<div class="javascript">&lt;div id="myElement"&gt;&lt;/div&gt;</div>
+
+<h2 class="title">Element Method: destroy</h2>
+
+移除元素及其子元素。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.destroy();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(null)</li>
+</ul>
+<h2 class="title">Element Method: toQueryString</h2>
+读取子input元素,生成一个查寻字符串。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var query = myElement.toQueryString();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(string)一个查寻字符串。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;form id="myForm" action="submit.php"&gt;
+    &lt;input name="email" value="bob@bob.com" /&gt;
+    &lt;input name="zipCode" value="90210" /&gt;
+&lt;/form&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myForm').toQueryString(); // returns "email=bob@bob.com&zipCode=90210".</div>
+
+<h2 class="title">Element Method: getSelected</h2>
+返回选中的select元素.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var selected = mySelect.getSelected();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)选中的selected元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;select id="country-select" name="country"&gt;
+    &lt;option value="US"&gt;United States&lt;/option
+    &lt;option value ="IT"&gt;Italy&lt;/option&gt;
+&lt;/select&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('country-select').getSelected(); // returns whatever the user selected.</div>
+
+<h2 class="title">Element Method: getProperty</h2>
+
+返回一个元素的属性。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myProp = myElement.getProperty(property);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ul>
+	<li>property - (string)属性名。</li>
+</ul>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(string)属性值。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;img id="myImage" src="mootools.png" title="MooTools, the compact JavaScript framework" alt="" /&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">var imgProps = $('myImage').getProperty('src'); // returns: 'mootools.png'.</div>
+
+<h2 class="title">Element Method: getProperties</h2>
+
+获取多个元素属性。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myProps = myElement.getProperties(properties);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ul>
+	<li>properties - (string)任意数量要检索的属性。</li>
+</ul>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object)包含所有属性值的对象。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;img id="myImage" src="mootools.png" title="MooTools, the compact JavaScript framework" alt="" /&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">var imgProps = $('myImage').getProperties('id', 'src', 'title', 'alt');
+// returns: { id: 'myImage', src: 'mootools.png', title: 'MooTools, the compact JavaScript framework', alt: '' }</div>
+
+<h2 class="title">Element Method: setProperty</h2>
+
+设置元素的属性。
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>property - (string) 属性名</li>
+	<li>value - (mixed) 属性值</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element) - 当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;img id="myImage" /&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myImage').setProperty('src', 'mootools.png');</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;img id="myImage" src="mootools.png" /&gt;</div>
+
+<h3 class="subTitle">注:</h3>
+<ul>
+	<li>使用此方法设置属性,传入属性小写,简化的形式.
+		<ul>
+			<li>用'for'代替'htmlFor'</li>
+			<li>用'class'代替'className'</li>
+			<li>用'frameborder'代替'frameBorder'</li>
+			<li>等...</li>
+		</ul>
+	</li>
+	<li>设置图像src属性时请先移除width,和height属性.</li>
+</ul>
+
+<h2 class="title">Element Method: setProperties</h2>			
+
+为元素设置多个属性。
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>properties - (object) 一个对象。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;img id="myImage" /&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myImage').setProperties({
+    src: 'whatever.gif',
+    alt: 'whatever dude'
+});</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;img id="myImage" src="whatever.gif" alt="whatever dude" /&gt;</div>
+
+<h2 class="title">Element Method: removeProperty</h2>
+
+移除元素的属性。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.removeProperty(property);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>property - (string)要移除的属性。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;a id="myAnchor" href="#" onmousedown="alert('click');"&gt;&lt;/a&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">//Eww... inline JavaScript is bad! Let's get rid of it.
+$('myAnchor').removeProperty('onmousedown');</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;a id="myAnchor" href="#"&gt;&lt;/a&gt;</div>
+
+<h2 class="title">Element Method: removeProperties</h2>
+
+移除元素多个属性。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.removeProperties(properties);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>properties - (strings)要移除的属性，之间用逗号隔开。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;a id="myAnchor" href="#" title="hello world"&gt;&lt;/a&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myAnchor').removeProperties('id', 'href', 'title');</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;a&gt;&lt;/a&gt;</div>
+
+<h2 class="title">Element Method: store</h2>
+存储数据.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.store(key, value);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>key - (string)要存储数据的键。</li>
+	<li>value - (mixed)要存数据的值。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$('element').store('someProperty', someValue);</div>
+
+<h2 class="title">Element Method: retrieve</h2>
+
+检索存储的数据。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.retrieve(key[, default]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>key - (string) 检索的键。</li>
+	<li>default - (mixed, optional) 哪果没找到返回的默认值。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)值。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$('element').retrieve('someProperty'); // returns someValue (see example above)</div>
+
+<h2 class="title">Element Method: eliminate</h2>
+
+删除元素中存储一个数据。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.eliminate(key);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>key - (string) 要删除数据的键。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed)当前元素</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$('element').eliminate('someProperty');</div>
+
+<h1 class="t1">Object: Element.Properties</h1>
+此函数包含函数,用以响应Element:get, Element:set 和 Element:erase的第一个参数.
+
+<h3 class="subTitle">添加自定义元素属性</h3>
+<div class="javascript">Element.Properties.disabled = {
+ 
+    get: function(){
+        return this.disabled;
+    },
+ 
+    set: function(value){
+        this.disabled = !!value;
+        this.setAttribute('disabled', !!value);
+    }
+ 
+};</div>
+<h3 class="subTitle">使用自定义元素属性</h3>
+<div class="javascript">// gets the "disabled" property
+$(element).get('disabled');
+// sets the "disabled" property to true, along with the attribute
+$(element).set('disabled', true);</div>
+
+<h3 class="subTitle">使用一个对象:</h3>
+此外,你可以进入自定义getters和setters用一个对象作为set函数的参数.
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">// using set:
+$(divElement).set({html: '<p>Hello <em>People</em>!</p>', style: 'background:red'});
+ 
+// for new Elements (works the same as set):
+new Element('input', {type: 'checkbox', checked: true, disabled: true});</div>
+
+<h2 class="title">Element Property: html</h2>
+
+<h3 class="subTitle">Setter</h3>
+
+设置元素的innerHTML 。
+
+<h4 class="subTitle">语法:</h4>
+<div class="javascript">myElement.set('html', html);</div>
+
+<h4 class="subTitle">参数:</h4>
+<ol>
+	<li>html - (string)字符串。</li>
+</ol>
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h4 class="subTitle">示例:</h4>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;&lt;/div&gt;</div>
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').set('html', '&lt;div&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;');</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;
+    &lt;div&gt;&lt;/div&gt;
+    &lt;p&gt;&lt;/p&gt;
+&lt;/div&gt;</div>
+<h3 class="subTitle">Getter</h3>
+<ul>
+	<li>返回元素的innerHTML。</li>
+</ul>
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.get('html');</div>
+
+
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(text)这个元素的innerHTML。</li>
+</ul>
+<h2 class="title">Element Property: text</h2>
+
+<h3 class="subTitle">Setter:</h3>
+
+设置元素的内部文本。
+
+<h4 class="subTitle">语法:</h4>
+<div class="javascript">myElement.set('text', text);</div>
+
+<h4 class="subTitle">参数:</h4>
+<ol>
+	<li>text - (string)文本内容。</li>
+</ol>
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h4 class="subTitle">示例:</h4>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;&lt;/div&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').set('text', 'some text');
+// the text of myElement is now 'some text'.</div>
+
+<h5>生成的HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;some text&lt;/div&gt;</div>
+
+<h3 class="subTitle">Getter:</h3>
+
+获取元素的内部文本。
+
+<h4 class="subTitle">语法:</h4>
+<div class="javascript">var myText = myElement.get('text');</div>
+
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(string)元素的文本。</li>
+</ul>
+<h4 class="subTitle">示例:</h4>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;my text&lt;/div&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">var myText = $('myElement').get('text'); // myText = 'my text'.</div>
+
+<h2 class="title">Element Property: tag</h2>
+
+<h3 class="subTitle">Getter:</h3>
+
+返回小写的元素名称。
+
+<h4 class="subTitle">语法:</h4>
+<div class="javascript">var myTag = myElement.get('tag');</div>
+
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(string)小写的标签名称。</li>
+</ul>
+<h4 class="subTitle">示例:</h4>
+<h5>HTML</h5>
+<div class="javascript">&lt;img id="myImage" /&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">var myTag = $('myImage').get('tag'); // myTag = 'img'</div>
+
+<h1 class="t1">Type: IFrame</h1>
+IFrame对象。
+<h2 class="title">IFrame Method: constructor</h2>
+
+创建一个iframe元素,并转化成MooTools对象。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myIFrame = new IFrame([el][, props]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>el - (mixed, optional) iframe的id或,iframe元素,如果没有传入,将创建一个新的iframe.</li>
+	<li>props - (object, optional) 新元素的属性。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)新的IFrame元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myIFrame = new IFrame({
+ 
+    src: 'http://mootools.net/',
+ 
+    styles: {
+        width: 800,
+        height: 600,
+        border: '1px solid #ccc'
+    },
+ 
+    events: {
+ 
+        mouseenter: function(){
+            alert('Welcome aboard.');
+        },
+ 
+        mouseleave: function(){
+            alert('Goodbye!');
+        },
+ 
+        load: function(){
+            alert('The iframe has finished loading.');
+        }
+ 
+    }
+ 
+});</div>
+
+<h1 class="t1">Type: Elements</h1>
+Elements类。
+
+<h2 class="title">Elements Method: constructor</h2>
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myElements = new Elements(elements[, options]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>elements - (mixed) 一个元素集合。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array) 一个元素组合。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h4>设置每个段落的颜色为红色:</h4>
+<div class="javascript">$$('p').each(function(el){
+    el.setStyle('color', 'red');
+});
+ 
+// Because $$('myselector') also accepts Element methods, the below
+// example has the same effect as the one above.
+$$('p').setStyle('color', 'red');</div>
+
+<h4>创建一个Elements从数组:</h4>
+<div class="javascript">var myElements = new Elements(['myElementID', $('myElement'), 'myElementID2', document.getElementById('myElementID3')]);</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>在MooTools的，每一个DOM函数返回节点集合的函数,返回为Elements的实例(如$$函数)。</li>
+	<li>因为Elements是一个array-like对象，所以它接受所有的Array的方法，但优先使用Element和Elements的方法。</li>
+	<li>Elements的每一个节点是一个Element对象。</li>
+</ul>
+<h2 class="title">Elements Method: append</h2>
+追加节点,返回当前对象。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">elements.append(collection);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>collection - (array)一个元素数组。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)当前元素集合。</li>
+</ul>
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>此方法不用document.id处理节点。</li>
+</ul>
+<h2 class="title">Elements Method: concat</h2>
+追加节点,返回新对象。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var newElements = elements.concat(element[, list, id, ...]]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>element - (mixed) 一个html元素,或一个id 。</li>
+	<li>list, id, ... - (mixed) 一元素数组，或id数组。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)一种新的Elements数组。</li>
+</ul>
+<h2 class="title">Elements Method: empty</h2>
+从Elements数组中删除每一个项目，并清空数组。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">elements.empty();</div>
+
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(array)这个空元素的数组。</li>
+</ul>
+<h3 class="subTitle">注意:</h3>
+
+Elements.empty销毁里面的元素,如果你不再使用此元素,你应该销毁它.例如:
+<div class="javascript">$$('div').destroy().empty();</div>
+
+<h2 class="title"Elements Method: filter</h2>
+用css选择器过滤一个元素集合.与Array:filter相似.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var filteredElements = elements.filter(selector);</div>
+
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>selector - (mixed) 一个css选择器,或一个过滤函数</li>
+</ol>
+
+<h3 class="subTitle">返回:</h3>
+
+<ul>
+	<li>(array) 当前元素集合的一个子集</li>
+</ul>
+<h2 class="title">Elements Method: push</h2>
+追加一个元素,或一个元素集合,返回追加后的长度.
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var length = elements.push(element[, id, ...]]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>element - (mixed)一个元素,或一个元素的id.</li>
+	<li>id, ... - (mixed)额外的元素,或元素id(多个用逗号隔开)</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(number)追加后数组的长度.</li>
+</ul>
+<h2 class="title">Elements Method: unshift</h2>
+从前面增加一元素,或一元素集合.返回追加后的长度.
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var length = elements.unshift(element[, id, ...]]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>element - (mixed)一个元素,或一个元素的id.</li>
+	<li>id, ... - (mixed)额外的元素,或元素id(多个用逗号隔开)</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>追加后集合的长度.</li>
+</ul>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

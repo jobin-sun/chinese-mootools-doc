@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Swiff</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Class: Swiff</h1>
+创建一个Flash对象。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var mySwiff = new Swiff(path[, options]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>path - (string) SWF文件的路径。</li>
+	<li>options - (object, optional) 见下面的选项。</li>
+</ol>
+<h3 class="subTitle">选项:</h3>
+<ul>
+	<li>id - (string: defaults to 'Swiff_' + unique id) SWF对象的ID。</li>
+	<li>width - (number: defaults to 1) SWF对象的宽度。</li>
+	<li>height - (number: defaults to 1) SWF对象的高度。</li>
+	<li>container - (element) SWF对象的容器元素.</li>
+	<li>params - (object) 参数被传递给SWF对象(wmode, bgcolor, allowScriptAccess, loop, etc):
+		<ul>
+			<li>allowScriptAccess - (string: defaults to always) SWF对象允许访问的域。</li>
+			<li>quality - (string: defaults to 'high') 渲染质量。</li>
+			<li>swLiveConnect - (boolean: defaults to true) 允许远程脚本。</li>
+			<li>wMode - (string: defaults to 'window') 改变的SWF被显示在浏览器的方式。</li>
+		</ul>
+	</li>
+	<li>properties - (object) 对象元素的附加属性。</li>
+	<li>vars - (object) var将被传递给SWF作为flashVars的查询字符串。</li>
+	<li>callBacks - (object) 函数从SWF调用。这些将在全球范围可在影片中，并绑定到的对象。</li>
+</ul>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element) 一个新的HTML对象元素。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var obj = new Swiff('myMovie.swf', {
+    id: 'myBeautifulMovie',
+    width: 500,
+    height: 400,
+    params: {
+        wMode: 'opaque',
+        bgcolor: '#ff3300'
+    },
+    vars: {
+        myVariable: myJsVar,
+        myVariableString: 'hello'
+    },
+    callBacks: {
+        load: myOnloadFunc
+    }
+});</div>
+<h2 class="title">Swiff Function: remote</h2>
+用JavaScript调用一个ActionScript函数。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var result = Swiff.remote(obj, fn[, arg, arg, arg ...]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>obj - (element) 一个Swiff实例(一个HTML object元素)。</li>
+	<li>fn - (string) 在SWF执行的函数名。</li>
+	<li>arg - (mixed) 任何数目的参数传递给以上函数。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(mixed) ActionScript函数的返回值。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var obj = new Swiff('myMovie.swf');
+alert(Swiff.remote(obj, 'myFlashFn')); // alerts "This is from the .swf file!".</div>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

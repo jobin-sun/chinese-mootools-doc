@@ -1,0 +1,337 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Element/Event</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Type: Element</h1>
+自定义类型，它的方法允许所有的Element,window,document对象使用。
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>IE浏览器随机触发元素事件,如果它们没有被fireEvent触发。</li>
+</ul>
+<h2 class="title">Element Method: addEvent</h2>
+对元素设置一个侦听器.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.addEvent(type, fn);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>type - (string) 事件名,没有'on'。</li>
+	<li>fn - (function) 事件函数。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h5>HTML</h5>
+<div class="javascript">&lt;div id="myElement"&gt;Click me.&lt;/div&gt;</div>
+
+<h5>JavaScript</h5>
+<div class="javascript">$('myElement').addEvent('click', function(){
+    alert('clicked!');
+});</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>这种方法也可用到Document和Window对象上。</li>
+</ul>
+
+<h2 class="title">Element Method: removeEvent</h2>
+删除一个事件侦听器。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.removeEvent(type, fn);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>type - (string) 事件名称。</li>
+	<li>fn - (function) 删除的函数。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<h4>标准用法:</h4>
+<div class="javascript">var destroy = function(){ alert('Boom: ' + this.id); } // this refers to the Element.
+$('myElement').addEvent('click', destroy);
+ 
+//later...
+$('myElement').removeEvent('click', destroy);</div>
+<h4>绑定的例子:</h4>
+<div class="javascript">var destroy = function(){ alert('Boom: ' + this.id); }
+var boundDestroy = destroy.bind($('anotherElement'));
+$('myElement').addEvent('click', boundDestroy);
+ 
+//later...
+$('myElement').removeEvent('click', destroy); // this won't remove the event.
+$('myElement').removeEvent('click', destroy.bind($('anotherElement')); // this won't remove the event either.
+$('myElement').removeEvent('click', boundDestroy); // the correct way to remove the event.</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>当一个函数增加被Function:bind或Function:pass等,一个新的引用将被创建,为了使removeEvent工作,你必须传入一个更准确的引用。</li>
+	<li>这种方法也被用到Docuemnt和Windows对象上。</li>
+</ul>
+<h2 class="title">Element Method: addEvents</h2>
+增加多个事件侦听.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.addEvents(events);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>events - (object) 包含多个事件的对象(对象的key为事件名,value为事件函数)。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">$('myElement').addEvents({
+    mouseover: function(){
+        alert('mouseover');
+    },
+    click: function(){
+        alert('click');
+    }
+});</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>这种方法也可被用到Document和Window对象上。</li>
+</ul>
+<h2 class="title">Element Method: removeEvents</h2>
+删除多个事件,如果没有参数传入,将删除所有事件.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElements.removeEvents([events]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>events - (optional) 如果没有传入参数,则删除所有事件。
+		<ul>
+			<li>(string) 事件名如'click'。</li>
+			<li>(object) 与事件对应的事件函数。</li>
+		</ul>
+	</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myElement = $('myElement');
+myElement.addEvents({
+    mouseover: function(){
+        alert('mouseover');
+    },
+    click: function(){
+        alert('click');
+    }
+});
+ 
+myElement.addEvent('click', function(){ alert('clicked again'); });
+myElement.addEvent('click', function(){ alert('clicked and again :('); });
+//addEvent will keep appending each function.
+//Unfortunately for the visitor, there will be three alerts they'll have to click on.
+myElement.removeEvents('click'); // saves the visitor's finger by removing every click event.</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>这种方法也被用于Document和Window对象。</li>
+</ul>
+<h2 class="title">Element Method: fireEvent</h2>
+执行一个或多个事件.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.fireEvent(type[, args[, delay]]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>type - (string) 事件名称(例如"click" )</li>
+	<li>args - (mixed, optional) 事件函数的参数,数组或单个对象，如果超过一个参数,必须是一个数组。</li>
+	<li>delay - (number, optional) 延迟(ms)执行时间。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">// fires all the added 'click' events and passes the Element 'anElement' after one second
+$('myElement').fireEvent('click', $('anElement'), 1000);</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>不能触发行内事件如:onmousedown,onclick等 。</li>
+	<li>这种方法也可用于Document和Window对象。</li>
+</ul>
+<h2 class="title">Element Method: cloneEvents</h2>
+克隆事件从另一个事件到当前元素.
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.cloneEvents(from[, type]);</div>
+
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>from - (element) 复制所有事件从这个元素。</li>
+	<li>type - (string, optional) 复制指定事件,如果为null则复制所有。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myElement = $('myElement');
+var myClone = myElement.clone().cloneEvents(myElement); // clones the element and its events</div>
+
+<h3 class="subTitle">注意事项:</h3>
+<ul>
+	<li>这种方法也可用于Document和Window对象。</li>
+</ul>
+<h1 class="t1">Object: Element.Events</h1>
+可以通过增加Element.Events对象属性添加自定义事件.
+
+<h3 class="subTitle">参数:</h3>
+Element.Events.yourProperty(对象)可以是
+<ol>
+	<li>base - (string, optional) 基础事件。如果设置了condition参数,此参数是必须的。</li>
+	<li>condition - (function, optional) 自定义触发条件.</li>
+	<li>onAdd - (function, optional) 当事件被添加时执行。</li>
+	<li>onRemove - (function, optional) 当事件移除时执行。</li>
+</ol>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">Element.Events.shiftclick = {
+    base: 'click', // the base event type
+    condition: function(event){ //a function to perform additional checks
+        return (event.shift == true); // this means the event is free to fire
+    }
+};
+ 
+$('myInput').addEvent('shiftclick', function(event){
+    log('the user clicked the left mouse button while holding the shift key');
+});</div>
+
+<h2 class="title">Built-in Custom Events</h2>
+<h3 class="subTitle">Event: mouseenter</h3>
+当鼠标进入元素区域时被触发,如果鼠标再次进入元素的子元素,事件将不会再次触发(不像mouseover).
+<h4 class="subTitle">示例:</h4>
+<div class="javascript">$('myElement').addEvent('mouseenter', myFunction);</div>
+<h3 class="subTitle">Event: mouseleave</h3>
+当鼠标离开元素区域时被触发,如果鼠标跨越子元素时,事件将不会被触发(不像mouseout).
+
+<h4 class="subTitle">示例:</h4>
+<div class="javascript">$('myElement').addEvent('mouseleave', myFunction);</div>
+
+<h3 class="subTitle">Event: mousewheel</h3>
+当鼠标滚轮旋转时触发这个事件;
+
+<h4 class="subTitle">示例:</h4>
+<div class="javascript">$('myElement').addEvent('mousewheel', myFunction);</div>
+
+<h4 class="subTitle">注意事项:</h4>
+<ul>
+	<li>mouseenter和mouseleave事件被IE浏览器原生支持，其它浏览器将使用MooTools自定义的。</li>
+</ul>
+<h1 class="t1">Object: Element.NativeEvents</h1>
+这个对象包含所以事件类型名为键名,值可能是0,1,2.
+这是一个对象，所有已知的DOM事件类型，如点击，鼠标悬停，负载等每个事件都有一个值，可能的值是0 (未定义，为null ) ，1和2 。
+
+<h3 class="subTitle">为0时:</h3>
+
+默认情况下它是undefined。在这种情况下，你可以添加事件，但你应该手动触发他们。
+
+<h4 class="subTitle">例如:</h4>
+<div class="javascript">element.addEvent('pizza', fn);
+element.fireEvent('pizza', 'yum!');</div>
+<h3 class="subTitle">为1时:</h3>
+这种情况,事件被绑定到元素上用element.addEventListener或element.attachEvent(IE),你仍然能用element.fireEvent('load')手动触发.
+<h3 class="subTitle">为2时:</h3>
+第后一种情况和第二种情况相似,但这种情况事件包含数据(如click).
+
+<h3 class="subTitle">添加一个不支持的对象:</h3>
+<div class="javascript">Element.NativeEvents.popstate = 2;
+// Now element.addEvent('popstate', fn); will work everywhere</div>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

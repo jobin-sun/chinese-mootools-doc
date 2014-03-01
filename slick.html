@@ -1,0 +1,311 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Slick</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Slick</h1>
+
+Slick是MooTools的选择器引擎。它支持多种CSS2/CSS3选择器！
+
+<h2 class='title'>Reverse Combinators</h2>
+逆向选则器.
+
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">document.getElement('p ! div')    //一个&lt;div&gt;,并这个&lt;div&gt;是&lt;p&gt;的祖先
+document.getElement('p !> div')   // 一个&lt;div&gt;,并这个&lt;div&gt;是&lt;p&gt;的直接父类(中间没有间隔其它元素)
+document.getElement('.foo !+ p')  // 获取上一个相邻&lt;P&gt;兄弟节点</div>
+
+<h2 class="title">Function: Slick.definePseudo</h2>
+
+definePseudo允许你创建自己的自定义伪选择器。
+
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">Slick.definePseudo('display', function(value){
+    return Element.getStyle(this, 'display') == value;
+});
+ 
+<div style="display: none">foo</div>
+<div style="display: block">bar</div>
+ 
+$$(':display(block)');      // Will return the block element
+ 
+Slick.definePseudo('my-custom-pseudo', function(){
+    // 'this' is the node to check
+    return Element.retrieve(this, 'something-custom').isAwesome;
+});
+ 
+$$(':my-custom-pseudo')     // Will return the first <p> tag that is awesome</div>
+<h2 class="title">Selector: Next Siblings ('~')</h2>
+
+获取下一个兄弟节点。
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('p.foo ~')        // Gets all next siblings of <p class="foo">
+$$('p.foo ~ blockquote') // Gets every <blockquote> with a <p class="foo"> sibling somewhere *before* it</div>
+<h2 class="title">Selector: Previous Siblings ('!~')</h2>
+
+获取上一个兄弟节点。
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('p.foo !~')            // Gets all previous siblings of <p class="foo">
+$$('p.foo !~ blockquote') // Gets every <blockquote> with a <p class="foo"> sibling somewhere *after* it</div>
+<h2 class="javascript">Selector: All Siblings ('~~')</h2>
+
+获取所有的兄弟节点。
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('p.foo ~~')            // Gets all previous and next siblings of <p class="foo">
+$$('p.foo ~~ blockquote') // Gets every <blockquote> with a <p class="foo"> sibling before OR after it</div>
+<h2 class="title">Selector: First Child ('^')</h2>
+
+获取元素的第一个子节点。
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('p.foo ^')       // Gets the first child of <p class="foo">
+$$('p.foo ^ strong')    // Gets every <strong> that is the first element child of a <p class="foo"></div>
+<h2 class="title">Selector: Last Child ('!^')</h2>
+
+获取元素的最后一个子节点。
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('p.foo !^')      // Gets the last child of <p class="foo">
+$$('p.foo !^ strong')   // Gets every <strong> that is the last element child of a <p class="foo"></div>
+<h2 class="title">Selector: checked</h2>
+
+匹配所有checked的元素。
+
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">$$(':checked')
+ 
+$('myForm').getElements('input:checked');</div>
+<h2 class="title">Selector: enabled</h2>
+
+匹配所有enabled的元素。
+
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">$$(':enabled')
+ 
+$('myElement').getElements(':enabled');</div>
+<h2 class="">Selector: empty</h2>
+
+匹配的是空的所有元素。
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$(':empty');</div>
+
+<h2 class="title">Selector: contains</h2>
+
+匹配所有包含文本的元素。
+
+<h3 class="subTitle">变量:</h3>
+<ul>
+	<li>text - (string)该元素应包含的文本。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('p:contains("find me")');</div>
+<h2 class="title">Selector: focus</h2>
+
+获取取得焦点的元素。
+
+<h3 class="subTitle">例如:</h3>
+
+<div class="javascript">$$(':focus');       // Gets the element in focus</div>
+<h2 class="title">Selector: not</h2>
+
+匹配那些不匹配的所有元素。
+
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">$$(':not(div.foo)'); // all elements except divs with class 'foo'
+ 
+$$('input:not([type="submit"])'); // all inputs except submit buttons
+ 
+myElement.getElements(':not(a)');
+ 
+$$(':not(ul li)');</div>
+<h2 class="title">Selector: nth-child</h2>
+
+匹配第n(表达式)个子元素。
+<h3 class="subTitle">用法:</h3>
+<div class="javascript">':nth-child(nExpression)'</div>
+<h3 class="subTitle">变量:</h3>
+<ul>
+	<li>nExpression - ( String)一个数学表达式。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript"><span id="i1"></span>
+<span id="i2"></span>
+<span id="i3"></span>
+<span id="i4"></span>
+<span id="i5"></span>
+ 
+$$(':nth-child(1)'); //Returns Element #i1.
+ 
+$$(':nth-child(2n)'); //Returns Elements #i2 and #i4.
+ 
+$$(':nth-child(2n+1)') //Returns Elements #i1, #i3 and #i5.
+ 
+$$(':nth-child(3n+2)') //Returns Elements #i2 and #i5.</div>
+
+<p>每个奇数节点(同为2n+1):</p>
+<div class="javascript">':nth-child(odd)'</div>
+<p>每个偶数数节点(同为2n):</p>
+<div class="javascript">':nth-child(even)'</div>
+<h2 class="title">Selector: nth-last-child</h2>
+
+匹配每n(表达式)个子元素，从最后一个子元素开始。
+
+<h3 class="subTitle">用法:</h3>
+<div class="javascript">':nth-last-child(nExpression)'</div>
+
+<h3 class="subTitle">变量:</h3>
+<ul>
+	<li>nExpression - ( String)一个数学表达式。</li>
+</ul>
+
+
+<h3 class="subTitle">示例:</h3>
+<div class="javascript"><span id="i1"></span>
+<span id="i2"></span>
+<span id="i3"></span>
+<span id="i4"></span>
+<span id="i5"></span>
+ 
+$$(':nth-last-child(1)'); //Returns Element #i5.
+ 
+$$(':nth-last-child(2n)'); //Returns Elements #i2 and #i4.
+ 
+$$(':nth-last-child(2n+1)') //Returns Elements #i1, #i3 and #i5.
+ 
+$$(':nth-last-child(3n+2)') //Returns Elements #i1 and #i4.</div>
+<p>每个奇数元素(同为2n+1):</p>
+<div class="javascript">':nth-last-child(odd)'</div>
+<p>每一个偶数元素(同为2n):</p>
+<div class="javascript">':nth-last-child(even)'</div>
+<h2 class="title">Selector: even</h2>
+匹配每个偶数节点.
+
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('td:even');</div>
+
+<h2 class="title">Selector: odd</h2>
+匹配每个奇数节点.
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('td:odd');</div>
+
+<h2 class="title">Selector: index</h2>
+
+匹配指定索引的节点.
+
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('p:index(2)');       // Gets the third <p> tag.</div>
+<h3 class="subTitle">注意:</h3>
+
+这是零基数索引。
+
+<h2 class="title">Selector: first-child</h2>
+
+匹配的第一个子元素。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">':first-child'</div>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('td:first-child');</div>
+
+<h2 class="title">Selector: last-child</h2>
+
+匹配最后一个子元素。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">':last-child'</div>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('td:last-child');</div>
+<h2 class="title">Selector: only-child</h2>
+
+匹配其父元素的唯一的子元素。
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">':last-child'</div>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">$$('td:last-child');</div>
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>

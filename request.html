@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Mootools - Request</title>
+	<link href="css/common.css" rel="stylesheet" type="text/css">
+<script src="/assets/scripts/mootools.core.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<div id="header">
+	<div id="logo">
+		<h1><a href="/"><span>MooTools</span></a></h1>
+		<h2 id="logoTxt"><span>a compact javascript framework</span></h2>
+	</div>
+</div>
+<div id="left">
+	<h6 class="version" title="version:1.4.5">MooTools Core v1.4.5</h6>
+	<div class="tree1">
+		<div class="treeTitle">Core</div>
+		<div class="treeItem"><a href="core.html">Core</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Types</div>
+		<div class="treeItem"><a href="array.html">Array</a></div>
+		<div class="treeItem"><a href="string.html">String</a></div>
+		<div class="treeItem"><a href="number.html">Number</a></div>
+		<div class="treeItem"><a href="function.html">Function</a></div>
+		<div class="treeItem"><a href="object.html">Object</a></div>
+		<div class="treeItem"><a href="event.html">Event</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Browser</div>
+		<div class="treeItem"><a href="browser.html">Browser</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Class</div>
+		<div class="treeItem"><a href="class.html">Class</a></div>
+		<div class="treeItem"><a href="class_extras.html">Class.Extras</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Slick</div>
+		<div class="treeItem"><a href="slick.html">Slick</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Element</div>
+		<div class="treeItem"><a href="element.html">Element</a></div>
+		<div class="treeItem"><a href="element_style.html">Element.Style</a></div>
+		<div class="treeItem"><a href="element_event.html">Element.Event</a></div>
+		<div class="treeItem"><a href="element_delegation.html">Element.Delegation</a></div>
+		<div class="treeItem"><a href="element_dimensions.html">Element.Dimensions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Fx</div>
+		<div class="treeItem"><a href="fx.html">Fx</a></div>
+		<div class="treeItem"><a href="fx_css.html">Fx.CSS</a></div>
+		<div class="treeItem"><a href="fx_tween.html">Fx.Tween</a></div>
+		<div class="treeItem"><a href="fx_morph.html">Fx.Morph</a></div>
+		<div class="treeItem"><a href="fx_transitions.html">Fx.Transitions</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Request</div>
+		<div class="treeItem"><a href="request.html">Request</a></div>
+		<div class="treeItem"><a href="request_Html.html">Request.HTML</a></div>
+		<div class="treeItem"><a href="request_Json.html">Request.JSON</a></div>
+	</div>
+	<div class="tree1">
+		<div class="treeTitle">Utilities</div>
+		<div class="treeItem"><a href="cookie.html">Cookie</a></div>
+		<div class="treeItem"><a href="json.html">JSON</a></div>
+		<div class="treeItem"><a href="domready.html">DOMReady</a></div>
+		<div class="treeItem"><a href="swiff.html">Swiff</a></div>
+	</div>
+</div>
+<div id="right">
+<h1 class="t1">Class: Request</h1>
+一个XMLHttpRequest封装。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">var myRequest = new Request([options]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>options - (object, optional)见下文。</li>
+</ol>
+<h3 class="subTitle">选项:</h3>
+<ul>
+	<li>url - (string: defaults to null) 请求的URL(也可以是<a target="_blank" href="http://mootools.net/docs/more/Types/URI">URI</a>的一个实例)</li>
+	<li>data - (mixed: defaults to '') 请求的数据,可以是元素,对象或字符串.(注:对象使用Object:toQueryString,转成字符串,元素使用Element:toQueryString转成字符串)</li>
+	<li>format - (string: defaults to '') 此参数将被追加到data参数中,如'＆format=json'</li>
+	<li>link - (string: defaults to 'ignore') 可以是"ignore"，"cancel"和"chain"。
+		<ul>
+			<li>'ignore'-当请求正在进行时,新增请求将被乎略.</li>
+			<li>'cancel'-当请求正在进行时,新增请求出现,当前正在进行的请求将立刻结束,新请求立即执行.</li>
+			<li>'chain'-当请求正在进行时,新增请求将被追加到请求链,请求将按链表中的顺序依次执行.</li>
+		</ul>
+	</li>
+	<li>method - (string: defaults to 'post') 请求的方法，可以是'post'或'get' 。</li>
+	<li>emulation - (boolean: defaults to true) 如果设置为true,'post'和'get'之外的方法将被追加到post请求体,并命名为:'_method'</li>
+	<li>async - (boolean: defaults to true) 异步请求,如果设置成fasle,将执行同步请求,浏览器将被挂起,直到完成当前请求。</li>
+	<li>timeout - (integer: defaults to 0) 与Timeout事件同时使用,连接超时时执行Timeout事件.</li>
+	<li>headers - (object) 设置请求头。</li>
+	<li>urlEncoded - (boolean: defaults to true) 如果设置为true，则Content-Type头被设置为www-form-urlencoded + encoding</li>
+	<li>encoding - (string: defaults to 'utf-8') 在请求头设置编码。</li>
+	<li>noCache - (boolean; defaults to false) 如果为true,url将追加一个唯一字符串,以防止请求缓存,服务器会乎略唯一字符串(IE浏览器有个不好行为,默认缓存,包括脚本,此属性在设置验证码时必不可少).</li>
+	<li>isSuccess - (function) 覆盖内置的isSuccess函数。</li>
+	<li>evalScripts - (boolean: defaults to false) 如果设置为true，响应里面的script标签内脚本将被执行。</li>
+	<li>evalResponse - (boolean: defaults to false) 如果设置为true,整个响应都会被执行。</li>
+	<li>user - (string: defaults to null) 在http头设置用户名</li>
+	<li>password - (string: defaults to null) 设置http头设置密码</li>
+</ul>
+<h3 class="subTitle">Events:</h3>
+<h4>request</h4>
+触发当请求被发送.
+<h5>Signature:</h5>
+<div class="javascript">onRequest()</div>
+<h4>loadstart</h4>
+触发当请求加载时.(浏览器支持有限,当前Gecko和WebKit)。
+<h5>Signature:</h5>
+<div class="javascript">onLoadstart(event, xhr)</div>
+<h5>参数:</h5>
+<ol>
+	<li>event - (Event) loadstart事件。</li>
+	<li>xhr - (XMLHttpRequest) XMLHttpRequest实例。</li>
+</ol>
+<h4>progress</h4>
+触发当请求正在进行如正在上传或下载(浏览器支持有限,当前Gecko和WebKit)。
+<h5>Signature:</h5>
+<div class="javascript">onProgress(event, xhr)</div>
+<h5>参数:</h5>
+<ol>
+	<li>event - (Event) 请求进展情况,包括当前下载的字节数和总字节数。</li>
+	<li>xhr - (XMLHttpRequest) XMLHttpRequest实例。</li>
+</ol>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var myRequest = new Request({
+    url: 'image.jpg',
+    onProgress: function(event, xhr){
+        var loaded = event.loaded, total = event.total;
+ 
+        console.log(parseInt(loaded / total * 100, 10));
+    }
+});
+ 
+myRequest.send();</div>
+<h4>complete</h4>
+当请求完成时触发.
+<h5>Signature:</h5>
+<div class="javascript">onComplete()</div>
+<h4>cancel</h4>
+当请求取消时触发.
+<h5>Signature:</h5>
+<div class="javascript">onCancel()</div>
+<h4>success</h4>
+当请求成功时触发.
+<h5>Signature:</h5>
+<div class="javascript">onSuccess(responseText, responseXML)</div>
+<h5>参数:</h5>
+<ol>
+	<li>responseText - (string) 从请求返回的文本。</li>
+	<li>responseXML - (mixed) 从请求返回的文本。</li>
+</ol>
+<h4>failure</h4>
+当请求失败触发.
+<h5>Signature:</h5>
+<div class="javascript">onFailure(xhr)</div>
+<h5>参数:</h5>
+<ol>
+	<li>xhr - (XMLHttpRequest) XMLHttpRequest实例。</li>
+</ol>
+<h4>exception</h4>
+当请求头失败时触发.
+<h5>Signature:</h5>
+<div class="javascript">onException(headerName, value)</div>
+<h5>参数:</h5>
+<ol>
+	<li>headerName - (string) 失败的请求头名。</li>
+	<li>value - (string) 失败的没表示头值。</li>
+</ol>
+<h3 class="subTitle">属性:</h3>
+<ul>
+	<li>response - (object) 对象('text'和'XML'作链名)。可以访问此属性在'success'事件。</li>
+</ul>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 一个新的Request实例。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var myRequest = new Request({method: 'get', url: 'requestHandler.php'});
+myRequest.send('name=john&lastname=dorian');</div>
+<h4>timeout</h4>
+超时时触发.
+<h5>Signature:</h5>
+<div class="javascript">onTimeout()</div>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var myElement = document.id('myElement');
+ 
+var myRequest = new Request({
+    url: 'getMyText.php',
+    method: 'get',
+    onRequest: function(){
+        myElement.set('text', 'loading...');
+    },
+    onSuccess: function(responseText){
+        myElement.set('text', responseText);
+    },
+    onFailure: function(){
+        myElement.set('text', 'Sorry, your request failed :(');
+    }
+});
+ 
+document.id('myLink').addEvent('click', function(event){
+    event.stop();
+    myRequest.send('userid=' + this.get('data-userid'));
+});</div>
+<h2 class="title">Request Method: setHeader</h2>
+添加或修改请求头。它不会从options覆盖头。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myRequest.setHeader(name, value);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>name - (string) 属性名。</li>
+	<li>value - (string) 属性值。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 当前Request实例。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var myRequest = new Request({url: 'getData.php', method: 'get', headers: {'X-Request': 'JSON'}});
+myRequest.setHeader('Last-Modified', 'Sat, 1 Jan 2005 05:00:00 GMT');</div>
+<h2 class="title">Request Method: getHeader</h2>
+返回响应头,如果没有返回null.
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myRequest.getHeader(name);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>name - (string) 要取得的属性名。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(string) 属性的值。</li>
+	<li>(null) 如果没有找到。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var myRequest = new Request({url: 'getData.php', method: 'get', onSuccess: function(responseText, responseXML){
+    alert(this.getHeader('Date')); // alerts the server date (for example, 'Thu, 26 Feb 2009 20:26:06 GMT')
+}});</div>
+<h2 class="title">Request Method: send</h2>
+打开请求连接，并发送请求的数据。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myRequest.send([options]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>options - (object, optional) 要发送的数据，出于兼容性考虑,也可以是一个查询字符串。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object)当前Request实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myRequest = new Request({
+    url: 'http://localhost/some_url'
+}).send('save=username&name=John');</div>
+
+<h2 class="title">Request Methods: send aliases</h2>
+<p>Mootools提几个别名为Request:send为了更方便的使用一些方法.</p>
+<p>这些别名有:</p>
+<ul>
+	<li>post() and POST()</li>
+	<li>get() and GET()</li>
+	<li>put() and PUT()</li>
+	<li>delete() and DELETE()</li>
+</ul>
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myRequest.post([data]);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>data - (string, optional) 请求的数据。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 当前Request实例。</li>
+</ul>
+<h3 class="subTitle">示例:</h3>
+<div class="javascript">var myRequest = new Request({url: 'http://localhost/some_url'});
+ 
+myRequest.post('save=username&name=John');
+//...is equivalent to:
+myRequest.send({
+    method: 'post',
+    data: 'save=username&name=John'
+});
+ 
+myRequest.get('save=username&name=John');
+//...is equivalent to:
+myRequest.send({
+    method: 'get',
+    data: 'save=username&name=John'
+});</div>
+<h3 class="subTitle">注意:</h3>
+<p>
+默认情况下，emulation选项设置为true ，所以put和delete发送方法是模拟的，实际发送的为post方法，而方法名被作为_method的值传递,如:_method =delete。
+</p>
+<p>
+异步和超时选项是互斥的。如果异步设置为true ，那么就没有必要设置超时时间，因为服务器和浏览器将设置自己的超时返回执行脚本的其余部分。
+</p>
+<h2 class="title">Request Method: cancel</h2>
+取消当前运行的请求。
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myRequest.cancel();</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(object) 当前Request实例。<li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var myRequest = new Request({url: 'mypage.html', method: 'get'}).send('some=data');
+myRequest.cancel();</div>
+<h2 class="title">Request Method: isRunning</h2>
+如果请求正在运行，则返回true
+
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myRequest.isRunning()</div>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(boolean) True如果请求正在执行.</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<div class="javascript">var myRequest = new Request({url: 'mypage.html', method: 'get'}).send('some=data');
+ 
+if (myRequest.isRunning()) // It runs!</div>
+<h1 class="t1">Object: Element.Properties</h1>
+<h2 class="title">Element Property: send</h2>
+<h3 class="subTitle">Setter</h3>
+设置一个元素默认的Request实例。在处理form表单时很有用。
+<h4>语法:</h4>
+<div class="javascript">el.set('send'[, options]);</div>
+<h4 class="subTitle">参数:</h4>
+<ol>
+	<li>options - (object) 请求的选项。</li>
+</ol>
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(element)当前元素。</li>
+</ul>
+<h4 class="subTitle">例如:</h4>
+<div class="javascript">myForm.set('send', {url: 'contact.php', method: 'get'});
+myForm.send(); //Sends the form.</div>
+<h3 class="subTitle">Getter</h3>
+返回先前设置的Request实例(一个新的请求与默认选项)。
+<h4 class="subTitle">语法:</h4>
+<div class="javascript">el.get('send');</div>
+<h4 class="subTitle">参数:</h4>
+<ol>
+	<li>财产 - (string) Request属性参数。</li>
+</ol>
+<h4 class="subTitle">返回:</h4>
+<ul>
+	<li>(object) 请求实例。</li>
+</ul>
+<h4 class="subTitle">例如:</h4>
+<div class="javascript">el.set('send', {method: 'get'});
+el.send();
+el.get('send'); // returns the Request instance.</div>
+<h1 class="t1">Type: Element</h1>
+自定义类型,它的所有的方法允许$函数生成的元素使用.
+<h2 class="title">Element Method: send</h2>
+发送一个form表单,或一个包含input标签的元素.
+<h3 class="subTitle">语法:</h3>
+<div class="javascript">myElement.send(url);</div>
+<h3 class="subTitle">参数:</h3>
+<ol>
+	<li>url - (string, optional) 要请求的url,如果元素是form表单时,url可省略。</li>
+</ol>
+<h3 class="subTitle">返回:</h3>
+<ul>
+	<li>(element) 当前元素。</li>
+</ul>
+<h3 class="subTitle">例如:</h3>
+<h4>HTML</h4>
+<div class="javascript">&lt;form id="myForm" action="submit.php"&gt;
+    &lt;p&gt;
+        &lt;input name="email" value="bob@bob.com" /&gt;
+        &lt;input name="zipCode" value="90210" /&gt;
+    &lt;/p&gt;
+&lt;/form&gt;</div>
+<h4>Javascript</h4>
+<div class="javascript">$('myForm').send();</div>
+<h3 class="subTitle">注意:</h3>
+当元素为form表单时,url从form表单的action中提取。
+</div>
+<div class="clear docLicenses">
+此文档遵循<a target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Attribution-NonCommercial-ShareAlike 3.0</a>协议
+</div>
+<div class="copy">
+<p>copyright &copy2006-2014 <a target="_blank" href="http://mad4milk.net">Valerio Proietti</a> , translate by <a href="/">Jobin Sun</a></p>
+</div>
+<iframe src="iframe.html" id="notify"></iframe>
+</div>
+</body>
+</html>
