@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://www.chinamootools.com/</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/core.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/array.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/string.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/number.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/function.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/object.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/event.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/browser.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/class.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/class_extras.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/slick.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/element.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/element_style.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/element_event.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/element_delegation.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/element_dimensions.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/fx.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/fx_css.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/fx_tween.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/fx_morph.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/fx_transitions.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/request.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/request_Html.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/cookie.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/json.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/domready.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/swiff.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+</urlset>
