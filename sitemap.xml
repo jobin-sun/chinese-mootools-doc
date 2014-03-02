@@ -4,7 +4,6 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
 <url>
   <loc>http://www.chinamootools.com/</loc>
   <lastmod>2014-03-02T10:52:24+00:00</lastmod>
@@ -145,6 +144,12 @@
 </url>
 <url>
   <loc>http://www.chinamootools.com/request_Html.html</loc>
+  <lastmod>2014-03-02T10:52:24+00:00</lastmod>
+  <changefreq>weekly</changefreq>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.chinamootools.com/request_Json.html</loc>
   <lastmod>2014-03-02T10:52:24+00:00</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.80</priority>
