@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=0">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<meta name="format-detection" content="telephone=no" />
+	<title>Wechat test</title>
+	<script type="text/javascript" src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<style type="text/css">
+		html,body{width: 100%;height: 100%;margin: 0;padding: 0}
+		#l-map{width: 100%;height: 100%;}
+	</style>
+</head>
+<body>
+	<div id="l-map"></div>
+<script type="text/javascript">
+function sha1(data){
+  /**************************************************
+  Author：次碳酸钴（admin@web-tinker.com）
+  Input：Uint8Array
+  Output：Uint8Array
+  **************************************************/
+  var i,j,t;
+  var l=((data.length+8)>>>6<<4)+16,s=new Uint8Array(l<<2);
+  s.set(new Uint8Array(data.buffer)),s=new Uint32Array(s.buffer);
+  for(t=new DataView(s.buffer),i=0;i<l;i++)s[i]=t.getUint32(i<<2);
+  s[data.length>>2]|=0x80<<(24-(data.length&3)*8);
+  s[l-1]=data.length<<3;
+  var w=[],f=[
+    function(){return m[1]&m[2]|~m[1]&m[3];},
+    function(){return m[1]^m[2]^m[3];},
+    function(){return m[1]&m[2]|m[1]&m[3]|m[2]&m[3];},
+    function(){return m[1]^m[2]^m[3];}
+  ],rol=function(n,c){return n<<c|n>>>(32-c);},
+  k=[1518500249,1859775393,-1894007588,-899497514],
+  m=[1732584193,-271733879,null,null,-1009589776];
+  m[2]=~m[0],m[3]=~m[1];
+  for(i=0;i<s.length;i+=16){
+    var o=m.slice(0);
+    for(j=0;j<80;j++)
+      w[j]=j<16?s[i+j]:rol(w[j-3]^w[j-8]^w[j-14]^w[j-16],1),
+      t=rol(m[0],5)+f[j/20|0]()+m[4]+w[j]+k[j/20|0]|0,
+      m[1]=rol(m[1],30),m.pop(),m.unshift(t);
+    for(j=0;j<5;j++)m[j]=m[j]+o[j]|0;
+  };
+  t=new DataView(new Uint32Array(m).buffer);
+  for(var i=0;i<5;i++)m[i]=t.getUint32(i<<2);
+  return new Uint8Array(new Uint32Array(m).buffer);
+};
+var timestamp = Date.parse(new Date())/1000;
+var noncestr = "hehe";
+var jsapi = "bxLdikRXVbTPdHSM05e5u5aA6lL83yW06qkBzRrXvdEoi3kVpM7282yz1lgzn24czjhwyzwcj8NhTwcYdU9RnQ";
+var myUrl = "http://www.chinamootools.com/wechattest.html";
+var sigSrc = "jsapi_ticket="+jsapi+"&noncestr="+noncestr+"&timestamp="+timestamp+"&url="+myUrl;
+var sigDst = sha1(sigSrc);
+wx.config({
+    debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+    appId: 'wxa6fe79a9f47ff34c', // 必填，公众号的唯一标识
+    timestamp: timestamp, // 必填，生成签名的时间戳
+    nonceStr: noncestr, // 必填，生成签名的随机串
+    signature: sigDst,// 必填，签名，见附录1
+    jsApiList: ["openLocation","getLocation"] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
+});
+wx.ready(function(){
+	wx.getLocation({
+    	success: function (res) {
+        	var latitude = res.latitude; // 纬度，浮点数，范围为90 ~ -90
+        	var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
+        	var speed = res.speed; // 速度，以米/每秒计
+        	var accuracy = res.accuracy; // 位置精度
+        	wx.openLocation({
+			    latitude: latitude, // 纬度，浮点数，范围为90 ~ -90
+			    longitude: longitude, // 经度，浮点数，范围为180 ~ -180。
+			    name: '当前位置', // 位置名
+			    address: '测试位置详细', // 地址详情说明
+			    scale: 15, // 地图缩放级别,整形值,范围从1~28。默认为最大
+			    infoUrl: '' // 在查看位置界面底部显示的超链接,可点击跳转
+			});
+
+    	}
+	});
+})
+wx.error(function(res){
+	console.log(res)
+})
+
+</script>
+</body>
+</html>
