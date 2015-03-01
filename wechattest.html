@@ -54,6 +54,11 @@ var jsapi = "bxLdikRXVbTPdHSM05e5u5aA6lL83yW06qkBzRrXvdEoi3kVpM7282yz1lgzn24czjh
 var myUrl = "http://www.chinamootools.com/wechattest.html";
 var sigSrc = "jsapi_ticket="+jsapi+"&noncestr="+noncestr+"&timestamp="+timestamp+"&url="+myUrl;
 var sigDst = sha1(sigSrc);
+var myString = "";
+for (var i=0; i<sigDst.byteLength; i++) {
+            myString += String.fromCharCode(sigDst[i])
+        }
+sigDst = myString;
 alert(sigDst)
 wx.config({
     debug: true, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
