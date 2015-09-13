@@ -254,6 +254,31 @@ javascript及其框架的学习还是比较简单的,不用配置环境,有个�
 </div>
 <iframe src="iframe.html" id="notify" rel=“nofollow”></iframe>
 </div>
+<script>
+	function isLeapYear (Year) {
+	if (((Year % 4)==0) && ((Year % 100)!=0) || ((Year % 400)==0)) {
+		return (true);
+	} else { return (false); }
+}
+function happyProgrammersDay(){
+	if(!Cookie.read("programmersDayFlag")){
+		Cookie.write("programmersDayFlag","1",{duration:1})
+		alert("Happy programmers' day!\n48656c6c6f")
+	}
+}
+var today = new Date();
+var todayDate = today.getDate();
+var todayMonth = today.getMonth() + 1;
+if(isLeapYear(today.getFullYear())){
+	if(todayMonth == 9 && todayDate == 12){
+		happyProgrammersDay()
+	}
+}else{
+	if(todayMonth == 9 && todayDate == 13){
+		happyProgrammersDay()
+	}
+}
+</script>
 <div style="display:none;"><script type="text/javascript">
 var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
 document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F8cda00c775f700b8984f30b8c7004fd1' type='text/javascript'%3E%3C/script%3E"));
